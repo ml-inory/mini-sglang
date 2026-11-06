@@ -3,8 +3,8 @@
 Scaffold for minisgl.kernel.utils.
 
 Every behavior is intentionally left for the learner. See:
-- docs/code-map.md for the subsystem map
-- docs/index.md for the recommended order
+- docs/03-code-map.md for the subsystem map
+- docs/00-index.md for the recommended order
 """
 
 from __future__ import annotations
@@ -16,7 +16,7 @@ class CppArgList:
     """TODO: implement `CppArgList`. (original base: list[str])"""
 
     def __str__(self) -> str:
-        """TODO: implement `__str__`. Read docs/code-map.md before coding."""
+        """TODO: implement `__str__`. Read docs/03-code-map.md before coding."""
         raise NotImplementedError("Teaching scaffold: implement __str__()")
 
 
@@ -25,22 +25,22 @@ class KernelConfig:
 
     @property
     def template_args(self) -> str:
-        """TODO: implement `template_args`. Read docs/code-map.md before coding."""
+        """TODO: implement `template_args`. Read docs/03-code-map.md before coding."""
         raise NotImplementedError("Teaching scaffold: implement template_args()")
 
 
 def _make_name(*args: str) -> str:
-    """TODO: implement `_make_name`. Read docs/code-map.md before coding."""
+    """TODO: implement `_make_name`. Read docs/03-code-map.md before coding."""
     raise NotImplementedError("Teaching scaffold: implement _make_name()")
 
 
 def _make_wrapper(tup: Tuple[str, str]) -> str:
-    """TODO: implement `_make_wrapper`. Read docs/code-map.md before coding."""
+    """TODO: implement `_make_wrapper`. Read docs/03-code-map.md before coding."""
     raise NotImplementedError("Teaching scaffold: implement _make_wrapper()")
 
 
 def make_cpp_args(*args: CPP_TEMPLATE_TYPE) -> CppArgList:
-    """TODO: implement `make_cpp_args`. Read docs/code-map.md before coding."""
+    """TODO: implement `make_cpp_args`. Read docs/03-code-map.md before coding."""
     raise NotImplementedError("Teaching scaffold: implement make_cpp_args()")
 
 
@@ -54,7 +54,7 @@ def load_aot(
     extra_include_paths: List[str] | None = None,
     build_directory: str | None = None,
 ) -> Module:
-    """TODO: implement `load_aot`. Read docs/code-map.md before coding."""
+    """TODO: implement `load_aot`. Read docs/03-code-map.md before coding."""
     raise NotImplementedError("Teaching scaffold: implement load_aot()")
 
 
@@ -70,7 +70,7 @@ def load_jit(
     extra_include_paths: List[str] | None = None,
     build_directory: str | None = None,
 ) -> Module:
-    """TODO: implement `load_jit`. Read docs/code-map.md before coding."""
+    """TODO: implement `load_jit`. Read docs/03-code-map.md before coding."""
     raise NotImplementedError("Teaching scaffold: implement load_jit()")
 
 

@@ -1,6 +1,14 @@
-# Kernel 与 Attention 后端
+# 08 Kernel 与 Attention 后端
 
 这一章处理“性能相关但数学不变”的实现。原则是先参考、后向量化、再 kernel，最后才比较性能。
+
+## 本章作业 H08
+
+先完成 attention metadata 与 CPU reference，再接一个可选 backend 或自定义 kernel。必须覆盖边界 shape、page size 限制和 reference parity；没有 GPU 时提交设计、参考实现和待执行实验清单。
+
+```bash
+MINISGL_RUN_EXERCISES=1 python -m pytest tests/exercises/test_gpu_kernel.py -q
+```
 
 ## Attention Backend 统一契约
 
@@ -125,4 +133,4 @@ JIT 编译需要稳定缓存路径和编译错误回传。不要在 import 时�
 - PyNCCL 多进程测试可重复；
 - 性能结论包含误差范围和环境。
 
-下一章：[引擎与分布式](engine-and-distributed.md)。
+下一章：[引擎与分布式](09-engine-and-distributed.md)。

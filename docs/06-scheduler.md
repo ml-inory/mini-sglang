@@ -1,6 +1,16 @@
-# 调度器：从请求队列到计算 Batch
+# 06 调度器：从请求队列到计算 Batch
 
 调度器决定“下一步计算谁、算多少、占用哪些 KV page、何时结束”。它既是资源管理器，也是状态机。
+
+## 本章作业 H06
+
+实现 table、decode、prefill、chunked prefill 和主调度循环。先让完整 prefill/decode 通过，再增加多请求、容量不足和 abort；每次资源释放都要有测试。
+
+```bash
+MINISGL_RUN_EXERCISES=1 python -m pytest tests/exercises/test_table_and_decode.py -q
+```
+
+交付一张 waiting -> prefill/chunking -> decode -> finished/aborted 状态图。
 
 ## 两种计算阶段
 
@@ -155,4 +165,4 @@ overlap 路径让上一轮 GPU 计算与下一轮 CPU metadata 准备并行：
 - 能解释 overlap 路径中每个 tensor 的所有权；
 - `test_table_and_decode.py` 通过。
 
-下一章：[模型与层](models-and-layers.md)。
+下一章：[模型与层](07-models-and-layers.md)。

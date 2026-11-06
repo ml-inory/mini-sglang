@@ -1,6 +1,14 @@
-# 服务链路：HTTP、Token 与流式回复
+# 10 服务链路：HTTP、Token 与流式回复
 
 服务层的目标是把 OpenAI 风格的文本接口转换成内部 token 请求，再把离散 token 安全地还原成文本。
+
+## 本章作业 H10
+
+实现 server、tokenizer、detokenizer、LLM 门面和 shell。交付 `/v1/models`、chat completion 的 stream/non-stream、UTF-8 增量解码和客户端断开 abort 测试。
+
+```bash
+MINISGL_RUN_EXERCISES=1 python -m pytest tests/exercises/test_server.py -q
+```
 
 ## 进程角色
 
@@ -103,4 +111,4 @@ benchmark client 必须区分“服务端处理时间”和“网络排队时间
 - 请求结束后 active/缓存/table slot 都归零；
 - `test_server.py` 通过。
 
-下一章：[性能实验](performance.md)。
+下一章：[性能实验](11-performance.md)。

@@ -23,7 +23,7 @@ def main(argv: Sequence[str] | None = None) -> int:
     """Print the scaffold status instead of pretending to launch an engine."""
     args = build_parser().parse_args(argv)
     print("Mini-SGLang teaching scaffold: no inference backend is implemented yet.")
-    print("Start with docs/index.md, then run: MINISGL_RUN_EXERCISES=1 pytest tests/exercises")
+    print("Start with docs/00-index.md, then run: MINISGL_RUN_EXERCISES=1 pytest tests/exercises")
     if args.model:
         print(f"Requested model (not loaded): {args.model}")
     if args.shell:

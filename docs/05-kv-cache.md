@@ -1,6 +1,16 @@
-# KV Cache 与前缀复用
+# 05 KV Cache 与前缀复用
 
 KV Cache 是本项目从“逐 token 重算”升级为“连续生成服务”的第一道关键优化。
+
+## 本章作业 H05
+
+依次实现 cache 基础契约、Naive 前缀缓存、Radix Tree、MHA pool 和 `scheduler/cache.py`。必须补齐 page size 为 `1/2/4`、共享前缀、分叉、lock 和 evict 的测试。
+
+```bash
+MINISGL_RUN_EXERCISES=1 python -m pytest tests/exercises/test_cache.py -q
+```
+
+提交物包含测试结果、一次容量估算和资源不变量清单。
 
 ## 为什么缓存 K/V
 
@@ -119,4 +129,4 @@ KV Cache 是本项目从“逐 token 重算”升级为“连续生成服务”�
 
 测试入口：`tests/exercises/test_cache.py`，并建议新增 `tests/exercises/test_cache_properties.py` 做随机模型测试。
 
-下一章：[调度器](scheduler.md)。
+下一章：[调度器](06-scheduler.md)。

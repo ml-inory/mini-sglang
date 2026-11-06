@@ -3,8 +3,8 @@
 Scaffold for minisgl.layers.rotary.
 
 Every behavior is intentionally left for the learner. See:
-- docs/code-map.md for the subsystem map
-- docs/index.md for the recommended order
+- docs/03-code-map.md for the subsystem map
+- docs/00-index.md for the recommended order
 """
 
 from __future__ import annotations
@@ -23,13 +23,13 @@ class RotaryEmbedding:
         base: float,
         post_process: None | Callable[[torch.Tensor], torch.Tensor] = None,
     ) -> None:
-        """TODO: implement `__init__`. Read docs/code-map.md before coding."""
+        """TODO: implement `__init__`. Read docs/03-code-map.md before coding."""
         raise NotImplementedError("Teaching scaffold: implement __init__()")
 
     def forward(
         self, positions: torch.Tensor, query: torch.Tensor, key: torch.Tensor
     ) -> Tuple[torch.Tensor, torch.Tensor]:
-        """TODO: implement `forward`. Read docs/code-map.md before coding."""
+        """TODO: implement `forward`. Read docs/03-code-map.md before coding."""
         raise NotImplementedError("Teaching scaffold: implement forward()")
 
 
@@ -40,12 +40,12 @@ def _get_rope(
     base: float,
     rope_scaling: Dict[str, Any] | None = None,
 ) -> RotaryEmbedding:
-    """TODO: implement `_get_rope`. Read docs/code-map.md before coding."""
+    """TODO: implement `_get_rope`. Read docs/03-code-map.md before coding."""
     raise NotImplementedError("Teaching scaffold: implement _get_rope()")
 
 
 def set_rope_device(device: torch.device):
-    """TODO: implement `set_rope_device`. Read docs/code-map.md before coding."""
+    """TODO: implement `set_rope_device`. Read docs/03-code-map.md before coding."""
     raise NotImplementedError("Teaching scaffold: implement set_rope_device()")
 
 
@@ -56,7 +56,7 @@ def get_rope(
     base: float,
     rope_scaling: Tuple[Tuple[str, Any], ...] | None = None,
 ) -> RotaryEmbedding:
-    """TODO: implement `get_rope`. Read docs/code-map.md before coding."""
+    """TODO: implement `get_rope`. Read docs/03-code-map.md before coding."""
     raise NotImplementedError("Teaching scaffold: implement get_rope()")
 
 

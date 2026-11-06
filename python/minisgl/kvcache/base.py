@@ -3,8 +3,8 @@
 Scaffold for minisgl.kvcache.base.
 
 Every behavior is intentionally left for the learner. See:
-- docs/code-map.md for the subsystem map
-- docs/index.md for the recommended order
+- docs/03-code-map.md for the subsystem map
+- docs/00-index.md for the recommended order
 """
 
 from __future__ import annotations
@@ -18,32 +18,32 @@ class BaseKVCachePool:
     """
 
     def k_cache(self, index: int) -> torch.Tensor:
-        """TODO: implement `k_cache`. Read docs/code-map.md before coding."""
+        """TODO: implement `k_cache`. Read docs/03-code-map.md before coding."""
         raise NotImplementedError("Teaching scaffold: implement k_cache()")
 
     def v_cache(self, index: int) -> torch.Tensor:
-        """TODO: implement `v_cache`. Read docs/code-map.md before coding."""
+        """TODO: implement `v_cache`. Read docs/03-code-map.md before coding."""
         raise NotImplementedError("Teaching scaffold: implement v_cache()")
 
     def store_kv(
         self, k: torch.Tensor, v: torch.Tensor, out_loc: torch.Tensor, layer_id: int
     ) -> None:
-        """TODO: implement `store_kv`. Read docs/code-map.md before coding."""
+        """TODO: implement `store_kv`. Read docs/03-code-map.md before coding."""
         raise NotImplementedError("Teaching scaffold: implement store_kv()")
 
     @property
     def device(self) -> torch.device:
-        """TODO: implement `device`. Read docs/code-map.md before coding."""
+        """TODO: implement `device`. Read docs/03-code-map.md before coding."""
         raise NotImplementedError("Teaching scaffold: implement device()")
 
     @property
     def dtype(self) -> torch.dtype:
-        """TODO: implement `dtype`. Read docs/code-map.md before coding."""
+        """TODO: implement `dtype`. Read docs/03-code-map.md before coding."""
         raise NotImplementedError("Teaching scaffold: implement dtype()")
 
     @property
     def num_layers(self) -> int:
-        """TODO: implement `num_layers`. Read docs/code-map.md before coding."""
+        """TODO: implement `num_layers`. Read docs/03-code-map.md before coding."""
         raise NotImplementedError("Teaching scaffold: implement num_layers()")
 
 
@@ -51,7 +51,7 @@ class BaseCacheHandle:
     """TODO: implement `BaseCacheHandle`. (original base: ABC)"""
 
     def get_matched_indices(self) -> torch.Tensor:
-        """TODO: implement `get_matched_indices`. Read docs/code-map.md before coding."""
+        """TODO: implement `get_matched_indices`. Read docs/03-code-map.md before coding."""
         raise NotImplementedError("Teaching scaffold: implement get_matched_indices()")
 
 
@@ -60,7 +60,7 @@ class SizeInfo:
 
     @property
     def total_size(self) -> int:
-        """TODO: implement `total_size`. Read docs/code-map.md before coding."""
+        """TODO: implement `total_size`. Read docs/03-code-map.md before coding."""
         raise NotImplementedError("Teaching scaffold: implement total_size()")
 
 

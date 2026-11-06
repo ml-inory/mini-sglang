@@ -3,8 +3,8 @@
 Scaffold for minisgl.kernel.pynccl.
 
 Every behavior is intentionally left for the learner. See:
-- docs/code-map.md for the subsystem map
-- docs/index.md for the recommended order
+- docs/03-code-map.md for the subsystem map
+- docs/00-index.md for the recommended order
 """
 
 from __future__ import annotations
@@ -21,12 +21,12 @@ class PyNCCLCommunicator:
 
 
 def _load_nccl_module() -> Module:
-    """TODO: implement `_load_nccl_module`. Read docs/code-map.md before coding."""
+    """TODO: implement `_load_nccl_module`. Read docs/03-code-map.md before coding."""
     raise NotImplementedError("Teaching scaffold: implement _load_nccl_module()")
 
 
 def _get_pynccl_wrapper_cls():
-    """TODO: implement `_get_pynccl_wrapper_cls`. Read docs/code-map.md before coding."""
+    """TODO: implement `_get_pynccl_wrapper_cls`. Read docs/03-code-map.md before coding."""
     raise NotImplementedError("Teaching scaffold: implement _get_pynccl_wrapper_cls()")
 
 
@@ -37,5 +37,5 @@ def init_pynccl(
     tp_cpu_group: torch.distributed.ProcessGroup,
     max_size_bytes: int = 0,
 ) -> PyNCCLCommunicator:
-    """TODO: implement `init_pynccl`. Read docs/code-map.md before coding."""
+    """TODO: implement `init_pynccl`. Read docs/03-code-map.md before coding."""
     raise NotImplementedError("Teaching scaffold: implement init_pynccl()")

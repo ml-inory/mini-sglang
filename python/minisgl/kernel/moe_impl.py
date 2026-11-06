@@ -3,8 +3,8 @@
 Scaffold for minisgl.kernel.moe_impl.
 
 Every behavior is intentionally left for the learner. See:
-- docs/code-map.md for the subsystem map
-- docs/index.md for the recommended order
+- docs/03-code-map.md for the subsystem map
+- docs/00-index.md for the recommended order
 """
 
 from __future__ import annotations
@@ -26,10 +26,10 @@ def fused_moe_kernel_triton(
     config: Dict[str, Any],
     compute_type: torch.dtype,
 ) -> None:
-    """TODO: implement `fused_moe_kernel_triton`. Read docs/code-map.md before coding."""
+    """TODO: implement `fused_moe_kernel_triton`. Read docs/03-code-map.md before coding."""
     raise NotImplementedError("Teaching scaffold: implement fused_moe_kernel_triton()")
 
 
 def moe_sum_reduce_triton(input: torch.Tensor, output: torch.Tensor) -> None:
-    """TODO: implement `moe_sum_reduce_triton`. Read docs/code-map.md before coding."""
+    """TODO: implement `moe_sum_reduce_triton`. Read docs/03-code-map.md before coding."""
     raise NotImplementedError("Teaching scaffold: implement moe_sum_reduce_triton()")

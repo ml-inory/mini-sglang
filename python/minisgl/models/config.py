@@ -3,8 +3,8 @@
 Scaffold for minisgl.models.config.
 
 Every behavior is intentionally left for the learner. See:
-- docs/code-map.md for the subsystem map
-- docs/index.md for the recommended order
+- docs/03-code-map.md for the subsystem map
+- docs/00-index.md for the recommended order
 """
 
 from __future__ import annotations
@@ -23,10 +23,10 @@ class ModelConfig:
 
     @property
     def is_moe(self) -> bool:
-        """TODO: implement `is_moe`. Read docs/code-map.md before coding."""
+        """TODO: implement `is_moe`. Read docs/03-code-map.md before coding."""
         raise NotImplementedError("Teaching scaffold: implement is_moe()")
 
     @classmethod
     def from_hf(cls, config: PretrainedConfig) -> ModelConfig:
-        """TODO: implement `from_hf`. Read docs/code-map.md before coding."""
+        """TODO: implement `from_hf`. Read docs/03-code-map.md before coding."""
         raise NotImplementedError("Teaching scaffold: implement from_hf()")

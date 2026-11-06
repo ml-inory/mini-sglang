@@ -3,8 +3,8 @@
 Scaffold for minisgl.utils.registry.
 
 Every behavior is intentionally left for the learner. See:
-- docs/code-map.md for the subsystem map
-- docs/index.md for the recommended order
+- docs/03-code-map.md for the subsystem map
+- docs/00-index.md for the recommended order
 """
 
 from __future__ import annotations
@@ -16,23 +16,23 @@ class Registry:
     """TODO: implement `Registry`. (original base: Generic[T])"""
 
     def __init__(self, type: str):
-        """TODO: implement `__init__`. Read docs/code-map.md before coding."""
+        """TODO: implement `__init__`. Read docs/03-code-map.md before coding."""
         raise NotImplementedError("Teaching scaffold: implement __init__()")
 
     def register(self, name: str) -> Callable[[T], None]:
-        """TODO: implement `register`. Read docs/code-map.md before coding."""
+        """TODO: implement `register`. Read docs/03-code-map.md before coding."""
         raise NotImplementedError("Teaching scaffold: implement register()")
 
     def __getitem__(self, name: str) -> T:
-        """TODO: implement `__getitem__`. Read docs/code-map.md before coding."""
+        """TODO: implement `__getitem__`. Read docs/03-code-map.md before coding."""
         raise NotImplementedError("Teaching scaffold: implement __getitem__()")
 
     def supported_names(self) -> List[str]:
-        """TODO: implement `supported_names`. Read docs/code-map.md before coding."""
+        """TODO: implement `supported_names`. Read docs/03-code-map.md before coding."""
         raise NotImplementedError("Teaching scaffold: implement supported_names()")
 
     def assert_supported(self, names: str | Iterable[str]) -> None:
-        """TODO: implement `assert_supported`. Read docs/code-map.md before coding."""
+        """TODO: implement `assert_supported`. Read docs/03-code-map.md before coding."""
         raise NotImplementedError("Teaching scaffold: implement assert_supported()")
 
 

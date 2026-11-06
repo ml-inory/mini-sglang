@@ -3,8 +3,8 @@
 Scaffold for minisgl.kernel.store.
 
 Every behavior is intentionally left for the learner. See:
-- docs/code-map.md for the subsystem map
-- docs/index.md for the recommended order
+- docs/03-code-map.md for the subsystem map
+- docs/00-index.md for the recommended order
 """
 
 from __future__ import annotations
@@ -13,7 +13,7 @@ from typing import Any
 
 
 def _jit_store_module(element_size: int, *, config: KernelConfig = ...) -> Module:
-    """TODO: implement `_jit_store_module`. Read docs/code-map.md before coding."""
+    """TODO: implement `_jit_store_module`. Read docs/03-code-map.md before coding."""
     raise NotImplementedError("Teaching scaffold: implement _jit_store_module()")
 
 
@@ -24,7 +24,7 @@ def store_cache(
     k: torch.Tensor,
     v: torch.Tensor,
 ) -> None:
-    """TODO: implement `store_cache`. Read docs/code-map.md before coding."""
+    """TODO: implement `store_cache`. Read docs/03-code-map.md before coding."""
     raise NotImplementedError("Teaching scaffold: implement store_cache()")
 
 

@@ -3,8 +3,8 @@
 Scaffold for minisgl.attention.utils.
 
 Every behavior is intentionally left for the learner. See:
-- docs/code-map.md for the subsystem map
-- docs/index.md for the recommended order
+- docs/03-code-map.md for the subsystem map
+- docs/00-index.md for the recommended order
 """
 
 from __future__ import annotations
@@ -17,5 +17,5 @@ class BaseCaptureData:
 
     @classmethod
     def create(cls, max_bs: int, max_seq_len: int, device: torch.device, **kwargs):
-        """TODO: implement `create`. Read docs/code-map.md before coding."""
+        """TODO: implement `create`. Read docs/03-code-map.md before coding."""
         raise NotImplementedError("Teaching scaffold: implement create()")

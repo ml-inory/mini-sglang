@@ -1,8 +1,8 @@
-# Features of Mini-SGLang
+# 16 Features of Mini-SGLang
 
 > **Teaching scaffold note:** this page describes the target feature set of the original
 > project. This repository intentionally leaves those features unimplemented. Start with
-> [the curriculum](index.md) and use this page as a feature checklist.
+> [the curriculum](00-index.md) and use this page as a feature checklist.
 
 ## Online Serving
 

@@ -34,16 +34,28 @@ MINISGL_RUN_EXERCISES=1 python -m pytest tests/exercises -q
 python -m minisgl --help
 ```
 
-高级章节需要 NVIDIA GPU、CUDA Toolkit、PyTorch 或对应模型运行时。请按 [环境与硬件](docs/environment.md) 的说明安装可选依赖，不要在本机环境不满足要求时强行运行 GPU 测试。
+高级章节需要 NVIDIA GPU、CUDA Toolkit、PyTorch 或对应模型运行时。请按 [环境与硬件](docs/01-environment.md) 的说明安装可选依赖，不要在本机环境不满足要求时强行运行 GPU 测试。
 
 ## 从这里开始
 
-1. 阅读 [课程首页](docs/index.md)，了解推荐顺序和学习方法。
-2. 阅读 [仓库与模块地图](docs/code-map.md)，在源码目录中标出每个子系统的位置。
-3. 完成 [基础训练](docs/foundations.md)，补齐 Python、张量、并发和测试基础。
-4. 按章节实现 [核心请求模型](docs/core-and-messages.md)、[KV Cache](docs/kv-cache.md) 和 [调度器](docs/scheduler.md)。
-5. 继续完成 [模型与层](docs/models-and-layers.md)、[引擎与分布式](docs/engine-and-distributed.md)、[服务链路](docs/serving.md) 和 [性能实验](docs/performance.md)。
-6. 用 [结课项目](docs/capstone.md) 做一次端到端验收。
+文档已经按数字编号，建议严格按顺序阅读：
+
+1. [00 课程首页](docs/00-index.md)：学习路线与 H00-H13 作业总表。
+2. [01 环境与硬件](docs/01-environment.md)：建立 CPU 基线，判断能否进入 GPU 章节。
+3. [02 基础训练](docs/02-foundations.md)：完成 H02 基础工具。
+4. [03 仓库与模块地图](docs/03-code-map.md)：完成 H03 架构图。
+5. [04 请求与消息](docs/04-core-and-messages.md)：实现 Core 与消息协议。
+6. [05 KV Cache](docs/05-kv-cache.md)：实现分页缓存与前缀复用。
+7. [06 调度器](docs/06-scheduler.md)：实现 prefill、decode 和资源调度。
+8. [07 模型与层](docs/07-models-and-layers.md)：实现 Transformer 组件。
+9. [08 Kernel 与 Attention](docs/08-kernel-and-attention.md)：完成 reference 与可选 GPU 加速。
+10. [09 引擎与分布式](docs/09-engine-and-distributed.md)：完成 Engine、采样和 TP。
+11. [10 服务链路](docs/10-serving.md)：完成 tokenizer 与 OpenAI 兼容 API。
+12. [11 性能实验](docs/11-performance.md)：完成 H11 benchmark 报告。
+13. [12 测试手册](docs/12-testing.md)：完成 H12 测试质量检查。
+14. [13 结课项目](docs/13-capstone.md)：完成 H13 端到端验收。
+
+`14` 到 `17` 是教师参考、任务板、功能清单和系统结构资料，不需要插入主线顺序阅读。
 
 ## 重要原则
 

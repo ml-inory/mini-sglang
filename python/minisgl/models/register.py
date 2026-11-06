@@ -3,8 +3,8 @@
 Scaffold for minisgl.models.register.
 
 Every behavior is intentionally left for the learner. See:
-- docs/code-map.md for the subsystem map
-- docs/index.md for the recommended order
+- docs/03-code-map.md for the subsystem map
+- docs/00-index.md for the recommended order
 """
 
 from __future__ import annotations
@@ -13,7 +13,7 @@ from typing import Any
 
 
 def get_model_class(model_architecture: str, model_config: ModelConfig):
-    """TODO: implement `get_model_class`. Read docs/code-map.md before coding."""
+    """TODO: implement `get_model_class`. Read docs/03-code-map.md before coding."""
     raise NotImplementedError("Teaching scaffold: implement get_model_class()")
 
 

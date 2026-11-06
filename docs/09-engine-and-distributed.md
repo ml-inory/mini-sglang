@@ -1,6 +1,10 @@
-# 引擎与分布式执行
+# 09 引擎与分布式执行
 
 调度器决定“算什么”，Engine 决定“怎样在单个 TP rank 上真正算出来”。
+
+## 本章作业 H09
+
+实现 greedy sampler、Engine forward、CUDA Graph 边界和 TP 信息接口。先完成单卡 prefill 加多次 decode，再做两 rank collective smoke；提交 stream/sync 与失败清理说明。
 
 ## Engine 的边界
 
@@ -127,4 +131,4 @@ ZMQ 队列负责消息；NCCL 负责张量集合通信。两种通道失败模�
 - 所有 rank 能正常退出；
 - overlap 路径有明确的 stream 与 sync 测试。
 
-下一章：[服务链路](serving.md)。
+下一章：[服务链路](10-serving.md)。

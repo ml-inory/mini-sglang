@@ -3,8 +3,8 @@
 Scaffold for minisgl.distributed.impl.
 
 Every behavior is intentionally left for the learner. See:
-- docs/code-map.md for the subsystem map
-- docs/index.md for the recommended order
+- docs/03-code-map.md for the subsystem map
+- docs/00-index.md for the recommended order
 """
 
 from __future__ import annotations
@@ -16,11 +16,11 @@ class DistributedImpl:
     """TODO: implement `DistributedImpl`. (original base: ABC)"""
 
     def all_reduce(self, x: torch.Tensor) -> torch.Tensor:
-        """TODO: implement `all_reduce`. Read docs/code-map.md before coding."""
+        """TODO: implement `all_reduce`. Read docs/03-code-map.md before coding."""
         raise NotImplementedError("Teaching scaffold: implement all_reduce()")
 
     def all_gather(self, x: torch.Tensor) -> torch.Tensor:
-        """TODO: implement `all_gather`. Read docs/code-map.md before coding."""
+        """TODO: implement `all_gather`. Read docs/03-code-map.md before coding."""
         raise NotImplementedError("Teaching scaffold: implement all_gather()")
 
 
@@ -28,11 +28,11 @@ class TorchDistributedImpl:
     """TODO: implement `TorchDistributedImpl`. (original base: DistributedImpl)"""
 
     def all_reduce(self, x: torch.Tensor) -> torch.Tensor:
-        """TODO: implement `all_reduce`. Read docs/code-map.md before coding."""
+        """TODO: implement `all_reduce`. Read docs/03-code-map.md before coding."""
         raise NotImplementedError("Teaching scaffold: implement all_reduce()")
 
     def all_gather(self, x: torch.Tensor) -> torch.Tensor:
-        """TODO: implement `all_gather`. Read docs/code-map.md before coding."""
+        """TODO: implement `all_gather`. Read docs/03-code-map.md before coding."""
         raise NotImplementedError("Teaching scaffold: implement all_gather()")
 
 
@@ -40,11 +40,11 @@ class PyNCCLDistributedImpl:
     """TODO: implement `PyNCCLDistributedImpl`. (original base: DistributedImpl)"""
 
     def all_reduce(self, x: torch.Tensor) -> torch.Tensor:
-        """TODO: implement `all_reduce`. Read docs/code-map.md before coding."""
+        """TODO: implement `all_reduce`. Read docs/03-code-map.md before coding."""
         raise NotImplementedError("Teaching scaffold: implement all_reduce()")
 
     def all_gather(self, x: torch.Tensor) -> torch.Tensor:
-        """TODO: implement `all_gather`. Read docs/code-map.md before coding."""
+        """TODO: implement `all_gather`. Read docs/03-code-map.md before coding."""
         raise NotImplementedError("Teaching scaffold: implement all_gather()")
 
 
@@ -52,11 +52,11 @@ class DistributedCommunicator:
     """TODO: implement `DistributedCommunicator`."""
 
     def all_reduce(self, x: torch.Tensor) -> torch.Tensor:
-        """TODO: implement `all_reduce`. Read docs/code-map.md before coding."""
+        """TODO: implement `all_reduce`. Read docs/03-code-map.md before coding."""
         raise NotImplementedError("Teaching scaffold: implement all_reduce()")
 
     def all_gather(self, x: torch.Tensor) -> torch.Tensor:
-        """TODO: implement `all_gather`. Read docs/code-map.md before coding."""
+        """TODO: implement `all_gather`. Read docs/03-code-map.md before coding."""
         raise NotImplementedError("Teaching scaffold: implement all_gather()")
 
 

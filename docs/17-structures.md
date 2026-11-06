@@ -1,8 +1,8 @@
-# Structure of Mini-SGLang
+# 17 Structure of Mini-SGLang
 
 > **Teaching scaffold note:** this page is the reference architecture. Module paths are
 > preserved, but implementations are intentionally empty. For the implementation order,
-> use [the curriculum](index.md) and [the module map](code-map.md).
+> use [the curriculum](00-index.md) and [the module map](03-code-map.md).
 
 ## System Architecture
 

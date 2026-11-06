@@ -3,8 +3,8 @@
 Scaffold for minisgl.tokenizer.server.
 
 Every behavior is intentionally left for the learner. See:
-- docs/code-map.md for the subsystem map
-- docs/index.md for the recommended order
+- docs/03-code-map.md for the subsystem map
+- docs/00-index.md for the recommended order
 """
 
 from __future__ import annotations
@@ -13,7 +13,7 @@ from typing import Any
 
 
 def _unwrap_msg(msg: BaseTokenizerMsg) -> List[BaseTokenizerMsg]:
-    """TODO: implement `_unwrap_msg`. Read docs/code-map.md before coding."""
+    """TODO: implement `_unwrap_msg`. Read docs/03-code-map.md before coding."""
     raise NotImplementedError("Teaching scaffold: implement _unwrap_msg()")
 
 
@@ -29,5 +29,5 @@ def tokenize_worker(
     model_source: str = "huggingface",
     ack_queue: mp.Queue[str] | None = None,
 ) -> None:
-    """TODO: implement `tokenize_worker`. Read docs/code-map.md before coding."""
+    """TODO: implement `tokenize_worker`. Read docs/03-code-map.md before coding."""
     raise NotImplementedError("Teaching scaffold: implement tokenize_worker()")

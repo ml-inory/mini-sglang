@@ -3,8 +3,8 @@
 Scaffold for minisgl.moe.fused.
 
 Every behavior is intentionally left for the learner. See:
-- docs/code-map.md for the subsystem map
-- docs/index.md for the recommended order
+- docs/03-code-map.md for the subsystem map
+- docs/00-index.md for the recommended order
 """
 
 from __future__ import annotations
@@ -19,7 +19,7 @@ def fused_topk(
     renormalize: bool,
     num_token_non_padded: torch.Tensor | None = None,
 ) -> Tuple[torch.Tensor, torch.Tensor]:
-    """TODO: implement `fused_topk`. Read docs/code-map.md before coding."""
+    """TODO: implement `fused_topk`. Read docs/03-code-map.md before coding."""
     raise NotImplementedError("Teaching scaffold: implement fused_topk()")
 
 
@@ -66,14 +66,14 @@ def moe_align_block_size(
 
 
 def get_default_config(M: int, E: int, N: int, K: int, topk: int) -> Dict[str, int]:
-    """TODO: implement `get_default_config`. Read docs/code-map.md before coding."""
+    """TODO: implement `get_default_config`. Read docs/03-code-map.md before coding."""
     raise NotImplementedError("Teaching scaffold: implement get_default_config()")
 
 
 def try_get_optimal_moe_config(
     w1_shape: Tuple[int, ...], w2_shape: Tuple[int, ...], top_k: int, M: int
 ) -> Dict[str, int]:
-    """TODO: implement `try_get_optimal_moe_config`. Read docs/code-map.md before coding."""
+    """TODO: implement `try_get_optimal_moe_config`. Read docs/03-code-map.md before coding."""
     raise NotImplementedError("Teaching scaffold: implement try_get_optimal_moe_config()")
 
 
@@ -86,7 +86,7 @@ def fused_experts_impl(
     activation: str = "silu",
     apply_router_weight_on_input: bool = False,
 ) -> torch.Tensor:
-    """TODO: implement `fused_experts_impl`. Read docs/code-map.md before coding."""
+    """TODO: implement `fused_experts_impl`. Read docs/03-code-map.md before coding."""
     raise NotImplementedError("Teaching scaffold: implement fused_experts_impl()")
 
 
@@ -104,5 +104,5 @@ class FusedMoe:
         activation: str = "silu",
         apply_router_weight_on_input: bool = False,
     ) -> torch.Tensor:
-        """TODO: implement `forward`. Read docs/code-map.md before coding."""
+        """TODO: implement `forward`. Read docs/03-code-map.md before coding."""
         raise NotImplementedError("Teaching scaffold: implement forward()")

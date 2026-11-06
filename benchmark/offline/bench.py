@@ -21,7 +21,7 @@ def build_parser() -> argparse.ArgumentParser:
 
 def main(argv: Sequence[str] | None = None) -> int:
     build_parser().parse_args(argv)
-    raise NotImplementedError("Implement the offline benchmark in docs/performance.md")
+    raise NotImplementedError("Implement the offline benchmark in docs/11-performance.md")
 
 
 if __name__ == "__main__":

@@ -1,6 +1,14 @@
-# 基础训练
+# 02 基础训练
 
 本章不是 Python 语法大全，而是列出实现 Mini-SGLang 时最容易“看得懂但写不对”的基础能力。建议用半天集中补齐，再进入核心模块。
+
+## 本章作业 H02
+
+实现 `utils/misc.py` 的对齐/除法工具和 `utils/registry.py` 的注册表。为边界值、重复注册和未知 backend 各补至少一个测试。
+
+```bash
+MINISGL_RUN_EXERCISES=1 python -m pytest tests/exercises/test_foundations.py -q
+```
 
 ## 1. 数据模型与不变量
 
@@ -110,4 +118,4 @@ PyTorch 代码必须同时关注四个属性：
 MINISGL_RUN_EXERCISES=1 python -m pytest tests/exercises/test_foundations.py -vv
 ```
 
-基础练习通过后，阅读 [请求与消息](core-and-messages.md)。
+基础练习通过后，阅读 [请求与消息](04-core-and-messages.md)。

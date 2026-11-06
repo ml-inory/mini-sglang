@@ -3,8 +3,8 @@
 Scaffold for minisgl.kernel.triton.fused_moe.
 
 Every behavior is intentionally left for the learner. See:
-- docs/code-map.md for the subsystem map
-- docs/index.md for the recommended order
+- docs/03-code-map.md for the subsystem map
+- docs/00-index.md for the recommended order
 """
 
 from __future__ import annotations
@@ -27,7 +27,7 @@ def moe_sum_reduce_kernel(
     BLOCK_DIM: tl.constexpr,
     NUM_STAGE: tl.constexpr,
 ):
-    """TODO: implement `moe_sum_reduce_kernel`. Read docs/code-map.md before coding."""
+    """TODO: implement `moe_sum_reduce_kernel`. Read docs/03-code-map.md before coding."""
     raise NotImplementedError("Teaching scaffold: implement moe_sum_reduce_kernel()")
 
 

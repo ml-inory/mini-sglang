@@ -3,8 +3,8 @@
 Scaffold for minisgl.moe.base.
 
 Every behavior is intentionally left for the learner. See:
-- docs/code-map.md for the subsystem map
-- docs/index.md for the recommended order
+- docs/03-code-map.md for the subsystem map
+- docs/00-index.md for the recommended order
 """
 
 from __future__ import annotations
@@ -26,5 +26,5 @@ class BaseMoeBackend:
         activation: str,
         apply_router_weight_on_input: bool,
     ) -> torch.Tensor:
-        """TODO: implement `forward`. Read docs/code-map.md before coding."""
+        """TODO: implement `forward`. Read docs/03-code-map.md before coding."""
         raise NotImplementedError("Teaching scaffold: implement forward()")

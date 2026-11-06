@@ -1,4 +1,15 @@
-# 环境与硬件
+# 01 环境与硬件
+
+## 本章作业 H01
+
+建立三层环境中的至少第一层，并提交一份环境记录：Python 版本、安装命令、默认测试结果和可用的 GPU/CUDA 信息。高级硬件不可用时，明确写出跳过哪些实验。
+
+验收命令：
+
+```bash
+python -m pytest -x -q
+python -m minisgl --help
+```
 
 ## 三层环境
 
@@ -94,7 +105,7 @@ MINISGL_RUN_EXERCISES=1 python -m pytest -m "not slow" -q
 
 ## Docker
 
-仓库自带的是 CPU 教学镜像，用于快速验证脚手架和测试框架。需要 GPU 时，自行基于匹配的 CUDA 镜像安装 `model`、`serve` 和 `cuda` 依赖组，并在 [性能实验](performance.md) 中记录镜像版本。
+仓库自带的是 CPU 教学镜像，用于快速验证脚手架和测试框架。需要 GPU 时，自行基于匹配的 CUDA 镜像安装 `model`、`serve` 和 `cuda` 依赖组，并在 [性能实验](11-performance.md) 中记录镜像版本。
 
 ## 快速诊断表
 
@@ -107,4 +118,4 @@ MINISGL_RUN_EXERCISES=1 python -m pytest -m "not slow" -q
 | 多卡进程卡住 | rank 数、端口、NCCL 网络、所有 rank 是否执行同一集合通信 |
 | 显存增长不受控 | 先检查请求释放、缓存引用计数和 page table |
 
-环境准备好后，从 [基础训练](foundations.md) 开始。
+环境准备好后，从 [基础训练](02-foundations.md) 开始。

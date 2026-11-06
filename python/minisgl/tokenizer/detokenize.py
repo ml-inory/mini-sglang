@@ -3,8 +3,8 @@
 Scaffold for minisgl.tokenizer.detokenize.
 
 Every behavior is intentionally left for the learner. See:
-- docs/code-map.md for the subsystem map
-- docs/index.md for the recommended order
+- docs/03-code-map.md for the subsystem map
+- docs/00-index.md for the recommended order
 """
 
 from __future__ import annotations
@@ -32,9 +32,9 @@ class DetokenizeManager:
     """TODO: implement `DetokenizeManager`."""
 
     def __init__(self, tokenizer: PreTrainedTokenizerBase) -> None:
-        """TODO: implement `__init__`. Read docs/code-map.md before coding."""
+        """TODO: implement `__init__`. Read docs/03-code-map.md before coding."""
         raise NotImplementedError("Teaching scaffold: implement __init__()")
 
     def detokenize(self, msgs: List[DetokenizeMsg]) -> List[str]:
-        """TODO: implement `detokenize`. Read docs/code-map.md before coding."""
+        """TODO: implement `detokenize`. Read docs/03-code-map.md before coding."""
         raise NotImplementedError("Teaching scaffold: implement detokenize()")

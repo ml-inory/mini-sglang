@@ -3,8 +3,8 @@
 Scaffold for minisgl.benchmark.perf.
 
 Every behavior is intentionally left for the learner. See:
-- docs/code-map.md for the subsystem map
-- docs/index.md for the recommended order
+- docs/03-code-map.md for the subsystem map
+- docs/00-index.md for the recommended order
 """
 
 from __future__ import annotations
@@ -19,7 +19,7 @@ def perf_cuda(
     repetitions: int = 10,
     cuda_graph_repetitions: int | None = 10,
 ) -> float:
-    """TODO: implement `perf_cuda`. Read docs/code-map.md before coding."""
+    """TODO: implement `perf_cuda`. Read docs/03-code-map.md before coding."""
     raise NotImplementedError("Teaching scaffold: implement perf_cuda()")
 
 
@@ -32,7 +32,7 @@ def compare_memory_kernel_perf(
     extra_kwargs: Dict[str, Any] | None = None,
     need_latency: bool = True,
 ) -> Tuple[float, float]:
-    """TODO: implement `compare_memory_kernel_perf`. Read docs/code-map.md before coding."""
+    """TODO: implement `compare_memory_kernel_perf`. Read docs/03-code-map.md before coding."""
     raise NotImplementedError("Teaching scaffold: implement compare_memory_kernel_perf()")
 
 

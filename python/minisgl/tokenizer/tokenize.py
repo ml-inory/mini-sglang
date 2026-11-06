@@ -3,8 +3,8 @@
 Scaffold for minisgl.tokenizer.tokenize.
 
 Every behavior is intentionally left for the learner. See:
-- docs/code-map.md for the subsystem map
-- docs/index.md for the recommended order
+- docs/03-code-map.md for the subsystem map
+- docs/00-index.md for the recommended order
 """
 
 from __future__ import annotations
@@ -16,9 +16,9 @@ class TokenizeManager:
     """TODO: implement `TokenizeManager`."""
 
     def __init__(self, tokenizer: PreTrainedTokenizerBase) -> None:
-        """TODO: implement `__init__`. Read docs/code-map.md before coding."""
+        """TODO: implement `__init__`. Read docs/03-code-map.md before coding."""
         raise NotImplementedError("Teaching scaffold: implement __init__()")
 
     def tokenize(self, msgs: List[TokenizeMsg]) -> List[torch.Tensor]:
-        """TODO: implement `tokenize`. Read docs/code-map.md before coding."""
+        """TODO: implement `tokenize`. Read docs/03-code-map.md before coding."""
         raise NotImplementedError("Teaching scaffold: implement tokenize()")

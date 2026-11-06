@@ -1,6 +1,15 @@
-# 请求与消息
+# 04 请求与消息
 
 本章从“用户的一句话”追踪到调度器可处理的请求对象。
+
+## 本章作业 H04
+
+实现 `core.py` 和 `message/` 的最小契约，覆盖长度不变量、phase 派生、消息编码/解码和未知类型错误。先完成 CPU-only 测试，再接入张量模型。
+
+```bash
+MINISGL_RUN_EXERCISES=1 python -m pytest \
+  tests/exercises/test_core.py tests/exercises/test_messages.py -q
+```
 
 ## 核心对象
 
@@ -96,4 +105,4 @@ Context 保存一次 forward 中共享的 page table、attention backend、MoE b
 - 默认导入不依赖 PyTorch；
 - `test_core.py` 与 `test_messages.py` 通过。
 
-下一章进入 [KV Cache](kv-cache.md)。
+下一章进入 [KV Cache](05-kv-cache.md)。

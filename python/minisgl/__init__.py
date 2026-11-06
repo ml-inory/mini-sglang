@@ -1,6 +1,6 @@
 """Scaffold-first teaching package for Mini-SGLang.
 
-Start with docs/index.md. The package intentionally contains contracts rather than
+Start with docs/00-index.md. The package intentionally contains contracts rather than
 a working inference engine.
 """
 

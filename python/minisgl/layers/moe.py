@@ -3,8 +3,8 @@
 Scaffold for minisgl.layers.moe.
 
 Every behavior is intentionally left for the learner. See:
-- docs/code-map.md for the subsystem map
-- docs/index.md for the recommended order
+- docs/03-code-map.md for the subsystem map
+- docs/00-index.md for the recommended order
 """
 
 from __future__ import annotations
@@ -25,9 +25,9 @@ class MoELayer:
         activation: str = "silu",
         apply_router_weight_on_input: bool = False,
     ):
-        """TODO: implement `__init__`. Read docs/code-map.md before coding."""
+        """TODO: implement `__init__`. Read docs/03-code-map.md before coding."""
         raise NotImplementedError("Teaching scaffold: implement __init__()")
 
     def forward(self, hidden_states: torch.Tensor, router_logits: torch.Tensor):
-        """TODO: implement `forward`. Read docs/code-map.md before coding."""
+        """TODO: implement `forward`. Read docs/03-code-map.md before coding."""
         raise NotImplementedError("Teaching scaffold: implement forward()")

@@ -1,6 +1,14 @@
-# 模型与层
+# 07 模型与层
 
 本章把 Transformer 拆成可测试、可并行切分的组件。建议先实现无 TP 的 CPU 参考版本，再增加切分。
+
+## 本章作业 H07
+
+按 activation、RMSNorm、RoPE、linear、embedding、attention、minimal model 的顺序实现。每个算子先与 PyTorch 参考对齐，再实现 TP=2；至少保留一个固定输入/输出 golden case。
+
+```bash
+MINISGL_RUN_EXERCISES=1 python -m pytest tests/exercises/test_layers.py -q
+```
 
 ## 配置与模型注册
 
@@ -115,4 +123,4 @@ MoE 测试必须记录每个专家的 token 数。只看最终输出很难定位
 - 至少一个小模型能完成一次 forward；
 - 权重缺失、重复、shape mismatch 都有清晰报错。
 
-下一章：[Kernel 与 Attention](kernel-and-attention.md)。
+下一章：[Kernel 与 Attention](08-kernel-and-attention.md)。

@@ -3,8 +3,8 @@
 Scaffold for minisgl.message.tokenizer.
 
 Every behavior is intentionally left for the learner. See:
-- docs/code-map.md for the subsystem map
-- docs/index.md for the recommended order
+- docs/03-code-map.md for the subsystem map
+- docs/00-index.md for the recommended order
 """
 
 from __future__ import annotations
@@ -17,12 +17,12 @@ class BaseTokenizerMsg:
 
     @staticmethod
     def encoder(msg: BaseTokenizerMsg) -> Dict:
-        """TODO: implement `encoder`. Read docs/code-map.md before coding."""
+        """TODO: implement `encoder`. Read docs/03-code-map.md before coding."""
         raise NotImplementedError("Teaching scaffold: implement encoder()")
 
     @staticmethod
     def decoder(json: Dict) -> BaseTokenizerMsg:
-        """TODO: implement `decoder`. Read docs/code-map.md before coding."""
+        """TODO: implement `decoder`. Read docs/03-code-map.md before coding."""
         raise NotImplementedError("Teaching scaffold: implement decoder()")
 
 
