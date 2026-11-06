@@ -1,42 +1,28 @@
-# Adapted from: https://github.com/GeeeekExplorer/nano-vllm/blob/main/bench.py
+"""Offline throughput benchmark scaffold.
 
-import time
-from random import randint, seed
+Suggested contract:
+1. Load a fixed prompt/output-length distribution.
+2. Submit all requests to ``minisgl.llm.LLM``.
+3. Report request throughput, token throughput, TTFT, and inter-token latency.
+"""
 
-from minisgl.core import SamplingParams
-from minisgl.llm import LLM
+from __future__ import annotations
+
+import argparse
+from collections.abc import Sequence
 
 
-def main():
-    seed(0)
-    num_seqs = 256
-    max_input_len = 1024
-    max_ouput_len = 1024
+def build_parser() -> argparse.ArgumentParser:
+    parser = argparse.ArgumentParser(description="Offline Mini-SGLang benchmark scaffold")
+    parser.add_argument("--model", required=True)
+    parser.add_argument("--num-requests", type=int, default=256)
+    return parser
 
-    # align the hyperparameters
-    llm = LLM(
-        "Qwen/Qwen3-0.6B",
-        max_seq_len_override=4096,
-        max_extend_tokens=16384,
-        cuda_graph_max_bs=256,
-        page_size=256,
-    )
 
-    prompt_token_ids = [
-        [randint(0, 10000) for _ in range(randint(100, max_input_len))] for _ in range(num_seqs)
-    ]
-    sampling_params = [
-        SamplingParams(temperature=0.6, ignore_eos=True, max_tokens=randint(100, max_ouput_len))
-        for _ in range(num_seqs)
-    ]
-    llm.generate(["Benchmark: "], SamplingParams(temperature=0.1))  # to warm up flashinfer
-    t = time.time()
-    llm.generate(prompt_token_ids, sampling_params)
-    t = time.time() - t
-    total_tokens = sum(sp.max_tokens for sp in sampling_params)
-    throughput = total_tokens / t
-    print(f"Total: {total_tokens}tok, Time: {t:.2f}s, Throughput: {throughput:.2f}tok/s")
+def main(argv: Sequence[str] | None = None) -> int:
+    build_parser().parse_args(argv)
+    raise NotImplementedError("Implement the offline benchmark in docs/performance.md")
 
 
 if __name__ == "__main__":
-    main()
+    raise SystemExit(main())

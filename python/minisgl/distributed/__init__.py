@@ -1,3 +1,16 @@
+"""Teaching scaffold for minisgl.distributed.
+
+Scaffold for minisgl.distributed.
+
+Every behavior is intentionally left for the learner. See:
+- docs/code-map.md for the subsystem map
+- docs/index.md for the recommended order
+"""
+
+from __future__ import annotations
+
+from typing import Any
+
 from .impl import DistributedCommunicator, destroy_distributed, enable_pynccl_distributed
 from .info import DistributedInfo, get_tp_info, set_tp_info, try_get_tp_info
 

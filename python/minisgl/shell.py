@@ -1,4 +1,12 @@
-from .server import launch_server
+"""Teaching scaffold for minisgl.shell.
 
-if __name__ == "__main__":
-    launch_server(run_shell=True)
+Scaffold for minisgl.shell.
+
+Every behavior is intentionally left for the learner. See:
+- docs/code-map.md for the subsystem map
+- docs/index.md for the recommended order
+"""
+
+from __future__ import annotations
+
+from typing import Any

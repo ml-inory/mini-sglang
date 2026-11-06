@@ -1,10 +1,20 @@
-from abc import ABC, abstractmethod
+"""Teaching scaffold for minisgl.moe.base.
 
-import torch
+Scaffold for minisgl.moe.base.
+
+Every behavior is intentionally left for the learner. See:
+- docs/code-map.md for the subsystem map
+- docs/index.md for the recommended order
+"""
+
+from __future__ import annotations
+
+from typing import Any
 
 
-class BaseMoeBackend(ABC):
-    @abstractmethod
+class BaseMoeBackend:
+    """TODO: implement `BaseMoeBackend`. (original base: ABC)"""
+
     def forward(
         self,
         hidden_states: torch.Tensor,
@@ -15,4 +25,6 @@ class BaseMoeBackend(ABC):
         renormalize: bool,
         activation: str,
         apply_router_weight_on_input: bool,
-    ) -> torch.Tensor: ...
+    ) -> torch.Tensor:
+        """TODO: implement `forward`. Read docs/code-map.md before coding."""
+        raise NotImplementedError("Teaching scaffold: implement forward()")

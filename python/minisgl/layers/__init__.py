@@ -1,3 +1,16 @@
+"""Teaching scaffold for minisgl.layers.
+
+Scaffold for minisgl.layers.
+
+Every behavior is intentionally left for the learner. See:
+- docs/code-map.md for the subsystem map
+- docs/index.md for the recommended order
+"""
+
+from __future__ import annotations
+
+from typing import Any
+
 from .activation import gelu_and_mul, silu_and_mul
 from .attention import AttentionLayer
 from .base import BaseOP, OPList, StateLessOP

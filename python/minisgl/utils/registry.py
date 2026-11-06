@@ -1,38 +1,39 @@
-from typing import Callable, Generic, Iterable, List, TypeVar
+"""Teaching scaffold for minisgl.utils.registry.
 
-T = TypeVar("T")
+Scaffold for minisgl.utils.registry.
+
+Every behavior is intentionally left for the learner. See:
+- docs/code-map.md for the subsystem map
+- docs/index.md for the recommended order
+"""
+
+from __future__ import annotations
+
+from typing import Any
 
 
-class Registry(Generic[T]):
+class Registry:
+    """TODO: implement `Registry`. (original base: Generic[T])"""
+
     def __init__(self, type: str):
-        self._registry = {}
-        self._type = type
+        """TODO: implement `__init__`. Read docs/code-map.md before coding."""
+        raise NotImplementedError("Teaching scaffold: implement __init__()")
 
     def register(self, name: str) -> Callable[[T], None]:
-        if name in self._registry:
-            raise KeyError(f"{self._type} '{name}' is already registered.")
-
-        def decorator(item: T) -> None:
-            self._registry[name] = item
-
-        return decorator
+        """TODO: implement `register`. Read docs/code-map.md before coding."""
+        raise NotImplementedError("Teaching scaffold: implement register()")
 
     def __getitem__(self, name: str) -> T:
-        if name not in self._registry:
-            raise KeyError(f"Unsupported {self._type}: {name}")
-        return self._registry[name]
+        """TODO: implement `__getitem__`. Read docs/code-map.md before coding."""
+        raise NotImplementedError("Teaching scaffold: implement __getitem__()")
 
     def supported_names(self) -> List[str]:
-        return list(self._registry.keys())
+        """TODO: implement `supported_names`. Read docs/code-map.md before coding."""
+        raise NotImplementedError("Teaching scaffold: implement supported_names()")
 
     def assert_supported(self, names: str | Iterable[str]) -> None:
-        if isinstance(names, str):
-            names = [names]
-        for name in names:
-            if name not in self._registry:
-                from argparse import ArgumentTypeError
+        """TODO: implement `assert_supported`. Read docs/code-map.md before coding."""
+        raise NotImplementedError("Teaching scaffold: implement assert_supported()")
 
-                raise ArgumentTypeError(
-                    f"Unsupported {self._type}: {name}. "
-                    f"Supported items: {self.supported_names()}"
-                )
+
+T: Any = None

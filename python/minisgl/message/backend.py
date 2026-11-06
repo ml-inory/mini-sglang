@@ -1,41 +1,49 @@
+"""Teaching scaffold for minisgl.message.backend.
+
+Scaffold for minisgl.message.backend.
+
+Every behavior is intentionally left for the learner. See:
+- docs/code-map.md for the subsystem map
+- docs/index.md for the recommended order
+"""
+
 from __future__ import annotations
 
-from dataclasses import dataclass
-from typing import Dict, List
-
-import torch
-from minisgl.core import SamplingParams
-
-from .utils import deserialize_type, serialize_type
+from typing import Any
 
 
-@dataclass
 class BaseBackendMsg:
+    """TODO: implement `BaseBackendMsg`."""
+
     def encoder(self) -> Dict:
-        return serialize_type(self)
+        """TODO: implement `encoder`. Read docs/code-map.md before coding."""
+        raise NotImplementedError("Teaching scaffold: implement encoder()")
 
     @staticmethod
     def decoder(json: Dict) -> BaseBackendMsg:
-        return deserialize_type(globals(), json)
+        """TODO: implement `decoder`. Read docs/code-map.md before coding."""
+        raise NotImplementedError("Teaching scaffold: implement decoder()")
 
 
-@dataclass
-class BatchBackendMsg(BaseBackendMsg):
-    data: List[BaseBackendMsg]
+class BatchBackendMsg:
+    """TODO: implement `BatchBackendMsg`. (original base: BaseBackendMsg)"""
+
+    """TODO: replace this marker with the BatchBackendMsg implementation."""
 
 
-@dataclass
-class ExitMsg(BaseBackendMsg):
-    pass
+class ExitMsg:
+    """TODO: implement `ExitMsg`. (original base: BaseBackendMsg)"""
+
+    """TODO: replace this marker with the ExitMsg implementation."""
 
 
-@dataclass
-class UserMsg(BaseBackendMsg):
-    uid: int
-    input_ids: torch.Tensor  # CPU 1D int32 tensor
-    sampling_params: SamplingParams
+class UserMsg:
+    """TODO: implement `UserMsg`. (original base: BaseBackendMsg)"""
+
+    """TODO: replace this marker with the UserMsg implementation."""
 
 
-@dataclass
-class AbortBackendMsg(BaseBackendMsg):
-    uid: int
+class AbortBackendMsg:
+    """TODO: implement `AbortBackendMsg`. (original base: BaseBackendMsg)"""
+
+    """TODO: replace this marker with the AbortBackendMsg implementation."""

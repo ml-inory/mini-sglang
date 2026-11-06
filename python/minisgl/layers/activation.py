@@ -1,21 +1,28 @@
+"""Teaching scaffold for minisgl.layers.activation.
+
+Scaffold for minisgl.layers.activation.
+
+Every behavior is intentionally left for the learner. See:
+- docs/code-map.md for the subsystem map
+- docs/index.md for the recommended order
+"""
+
 from __future__ import annotations
 
-from typing import TYPE_CHECKING
-
-if TYPE_CHECKING:
-    import torch
+from typing import Any
 
 
 def silu_and_mul(x: torch.Tensor, out: torch.Tensor | None = None):
-    from flashinfer import silu_and_mul
-
-    return silu_and_mul(x, out=out)
+    """TODO: implement `silu_and_mul`. Read docs/code-map.md before coding."""
+    raise NotImplementedError("Teaching scaffold: implement silu_and_mul()")
 
 
 def gelu_and_mul(x: torch.Tensor, out: torch.Tensor | None = None):
-    from flashinfer import gelu_and_mul
+    """TODO: implement `gelu_and_mul`. Read docs/code-map.md before coding."""
+    raise NotImplementedError("Teaching scaffold: implement gelu_and_mul()")
 
-    return gelu_and_mul(x, out=out)
 
-
-__all__ = ["silu_and_mul", "gelu_and_mul"]
+__all__ = [
+    "silu_and_mul",
+    "gelu_and_mul",
+]

@@ -1,14 +1,20 @@
+"""Teaching scaffold for minisgl.models.base.
+
+Scaffold for minisgl.models.base.
+
+Every behavior is intentionally left for the learner. See:
+- docs/code-map.md for the subsystem map
+- docs/index.md for the recommended order
+"""
+
 from __future__ import annotations
 
-from abc import ABC, abstractmethod
-from typing import TYPE_CHECKING
-
-from minisgl.layers import BaseOP
-
-if TYPE_CHECKING:
-    import torch
+from typing import Any
 
 
-class BaseLLMModel(ABC, BaseOP):
-    @abstractmethod
-    def forward(self) -> torch.Tensor: ...
+class BaseLLMModel:
+    """TODO: implement `BaseLLMModel`. (original base: ABC, BaseOP)"""
+
+    def forward(self) -> torch.Tensor:
+        """TODO: implement `forward`. Read docs/code-map.md before coding."""
+        raise NotImplementedError("Teaching scaffold: implement forward()")

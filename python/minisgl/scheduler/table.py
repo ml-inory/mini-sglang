@@ -1,21 +1,33 @@
-import torch
+"""Teaching scaffold for minisgl.scheduler.table.
+
+Scaffold for minisgl.scheduler.table.
+
+Every behavior is intentionally left for the learner. See:
+- docs/code-map.md for the subsystem map
+- docs/index.md for the recommended order
+"""
+
+from __future__ import annotations
+
+from typing import Any
 
 
 class TableManager:
+    """TODO: implement `TableManager`."""
+
     def __init__(self, max_running_reqs: int, page_table: torch.Tensor) -> None:
-        self._max_running_reqs = max_running_reqs
-        self._free_slots = list(range(max_running_reqs))
-        self.page_table = page_table
-        # NOTE: dummy request also use this pool to get the input ids, so we need to
-        # make sure the token pool is initialized with valid values (token_id = 0).
-        self.token_pool = torch.zeros_like(page_table, dtype=torch.int32)
+        """TODO: implement `__init__`. Read docs/code-map.md before coding."""
+        raise NotImplementedError("Teaching scaffold: implement __init__()")
 
     @property
     def available_size(self) -> int:
-        return len(self._free_slots)
+        """TODO: implement `available_size`. Read docs/code-map.md before coding."""
+        raise NotImplementedError("Teaching scaffold: implement available_size()")
 
     def allocate(self) -> int:
-        return self._free_slots.pop()
+        """TODO: implement `allocate`. Read docs/code-map.md before coding."""
+        raise NotImplementedError("Teaching scaffold: implement allocate()")
 
     def free(self, slot: int) -> None:
-        self._free_slots.append(slot)
+        """TODO: implement `free`. Read docs/code-map.md before coding."""
+        raise NotImplementedError("Teaching scaffold: implement free()")

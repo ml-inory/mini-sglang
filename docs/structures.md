@@ -1,5 +1,9 @@
 # Structure of Mini-SGLang
 
+> **Teaching scaffold note:** this page is the reference architecture. Module paths are
+> preserved, but implementations are intentionally empty. For the implementation order,
+> use [the curriculum](index.md) and [the module map](code-map.md).
+
 ## System Architecture
 
 Mini-SGLang is designed as a distributed system to handle Large Language Model (LLM) inference efficiently. It consists of several independent processes working together.

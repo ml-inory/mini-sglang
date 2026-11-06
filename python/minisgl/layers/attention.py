@@ -1,21 +1,20 @@
+"""Teaching scaffold for minisgl.layers.attention.
+
+Scaffold for minisgl.layers.attention.
+
+Every behavior is intentionally left for the learner. See:
+- docs/code-map.md for the subsystem map
+- docs/index.md for the recommended order
+"""
+
 from __future__ import annotations
 
-from typing import TYPE_CHECKING
-
-import torch
-from minisgl.core import get_global_ctx
-from minisgl.distributed import get_tp_info
-from minisgl.utils import div_even
-
-from .base import StateLessOP
-from .rotary import get_rope
-
-if TYPE_CHECKING:
-    from minisgl.layers import RMSNorm
-    from minisgl.models import RotaryConfig
+from typing import Any
 
 
-class AttentionLayer(StateLessOP):
+class AttentionLayer:
+    """TODO: implement `AttentionLayer`. (original base: StateLessOP)"""
+
     def __init__(
         self,
         layer_id: int,
@@ -26,32 +25,9 @@ class AttentionLayer(StateLessOP):
         q_norm: RMSNorm | None = None,
         k_norm: RMSNorm | None = None,
     ):
-        assert num_qo_heads % num_kv_heads == 0
-        self.layer_id = layer_id
-        self.head_dim = head_dim
-        tp_size = get_tp_info().size
-        self.num_qo_heads = div_even(num_qo_heads, tp_size)
-        self.num_kv_heads = div_even(num_kv_heads, tp_size, allow_replicate=True)
-        self.qo_attn_dim = self.num_qo_heads * head_dim
-        self.kv_attn_dim = self.num_kv_heads * head_dim
-        self.rotary = get_rope(
-            head_dim=head_dim,
-            rotary_dim=rotary_config.rotary_dim,
-            max_position=rotary_config.max_position,
-            base=rotary_config.base,
-            rope_scaling=tuple(rotary_config.scaling.items()) if rotary_config.scaling else None,
-        )
-        self.q_norm = q_norm
-        self.k_norm = k_norm
+        """TODO: implement `__init__`. Read docs/code-map.md before coding."""
+        raise NotImplementedError("Teaching scaffold: implement __init__()")
 
     def forward(self, qkv: torch.Tensor) -> torch.Tensor:
-        ctx = get_global_ctx()
-        q, k, v = qkv.split([self.qo_attn_dim, self.kv_attn_dim, self.kv_attn_dim], dim=-1)
-        if self.q_norm is not None:
-            self.q_norm.forward_inplace(q.view(-1, self.num_qo_heads, self.head_dim))
-        if self.k_norm is not None:
-            self.k_norm.forward_inplace(k.view(-1, self.num_kv_heads, self.head_dim))
-        q, k = self.rotary.forward(ctx.batch.positions, q, k)
-        q = q.view(-1, self.num_qo_heads, self.head_dim)
-        o = ctx.attn_backend.forward(q, k, v, self.layer_id, ctx.batch)
-        return o.view(-1, self.qo_attn_dim)
+        """TODO: implement `forward`. Read docs/code-map.md before coding."""
+        raise NotImplementedError("Teaching scaffold: implement forward()")

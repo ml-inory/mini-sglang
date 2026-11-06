@@ -1,37 +1,22 @@
+"""Teaching scaffold for minisgl.utils.torch_utils.
+
+Scaffold for minisgl.utils.torch_utils.
+
+Every behavior is intentionally left for the learner. See:
+- docs/code-map.md for the subsystem map
+- docs/index.md for the recommended order
+"""
+
 from __future__ import annotations
 
-import functools
-from contextlib import contextmanager
-from typing import TYPE_CHECKING
-
-if TYPE_CHECKING:
-    import torch
+from typing import Any
 
 
-@contextmanager
 def torch_dtype(dtype: torch.dtype):
-    import torch  # real import when used
-
-    old_dtype = torch.get_default_dtype()
-    torch.set_default_dtype(dtype)
-    try:
-        yield
-    finally:
-        torch.set_default_dtype(old_dtype)
+    """TODO: implement `torch_dtype`. Read docs/code-map.md before coding."""
+    raise NotImplementedError("Teaching scaffold: implement torch_dtype()")
 
 
 def nvtx_annotate(name: str, layer_id_field: str | None = None):
-    import torch.cuda.nvtx as nvtx
-
-    def decorator(fn):
-        @functools.wraps(fn)
-        def wrapper(self, *args, **kwargs):
-            display_name = name
-            if layer_id_field and hasattr(self, layer_id_field):
-                display_name = name.format(getattr(self, layer_id_field))
-            with nvtx.range(display_name):
-                return fn(self, *args, **kwargs)
-
-        return wrapper
-
-    return decorator
+    """TODO: implement `nvtx_annotate`. Read docs/code-map.md before coding."""
+    raise NotImplementedError("Teaching scaffold: implement nvtx_annotate()")

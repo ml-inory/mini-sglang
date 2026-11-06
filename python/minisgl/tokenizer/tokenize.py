@@ -1,31 +1,24 @@
+"""Teaching scaffold for minisgl.tokenizer.tokenize.
+
+Scaffold for minisgl.tokenizer.tokenize.
+
+Every behavior is intentionally left for the learner. See:
+- docs/code-map.md for the subsystem map
+- docs/index.md for the recommended order
+"""
+
 from __future__ import annotations
 
-from typing import List
-
-import torch
-from minisgl.message import TokenizeMsg
-from transformers import PreTrainedTokenizerBase
+from typing import Any
 
 
 class TokenizeManager:
+    """TODO: implement `TokenizeManager`."""
+
     def __init__(self, tokenizer: PreTrainedTokenizerBase) -> None:
-        self.tokenizer = tokenizer
+        """TODO: implement `__init__`. Read docs/code-map.md before coding."""
+        raise NotImplementedError("Teaching scaffold: implement __init__()")
 
     def tokenize(self, msgs: List[TokenizeMsg]) -> List[torch.Tensor]:
-        results: List[torch.Tensor] = []
-        # TODO: batch tokenization
-        for msg in msgs:
-            if isinstance(msg.text, list):
-                prompt = self.tokenizer.apply_chat_template(
-                    msg.text,
-                    tokenize=False,
-                    add_generation_prompt=True,
-                )
-                assert isinstance(prompt, str)
-            else:
-                prompt = msg.text
-            input_ids: torch.Tensor = (  # type: ignore
-                self.tokenizer.encode(prompt, return_tensors="pt")
-            )
-            results.append(input_ids.view(-1).to(torch.int32))
-        return results
+        """TODO: implement `tokenize`. Read docs/code-map.md before coding."""
+        raise NotImplementedError("Teaching scaffold: implement tokenize()")

@@ -1,29 +1,32 @@
+"""Teaching scaffold for minisgl.utils.arch.
+
+Scaffold for minisgl.utils.arch.
+
+Every behavior is intentionally left for the learner. See:
+- docs/code-map.md for the subsystem map
+- docs/index.md for the recommended order
+"""
+
 from __future__ import annotations
 
-import functools
-from typing import Tuple
+from typing import Any
 
 
-@functools.cache
 def _get_torch_cuda_version() -> Tuple[int, int] | None:
-    import torch
-    import torch.version
-
-    if not torch.cuda.is_available() or not torch.version.cuda:
-        return None
-    return torch.cuda.get_device_capability()
+    """TODO: implement `_get_torch_cuda_version`. Read docs/code-map.md before coding."""
+    raise NotImplementedError("Teaching scaffold: implement _get_torch_cuda_version()")
 
 
 def is_arch_supported(major: int, minor: int = 0) -> bool:
-    arch = _get_torch_cuda_version()
-    if arch is None:
-        return False
-    return arch >= (major, minor)
+    """TODO: implement `is_arch_supported`. Read docs/code-map.md before coding."""
+    raise NotImplementedError("Teaching scaffold: implement is_arch_supported()")
 
 
 def is_sm90_supported() -> bool:
-    return is_arch_supported(9, 0)
+    """TODO: implement `is_sm90_supported`. Read docs/code-map.md before coding."""
+    raise NotImplementedError("Teaching scaffold: implement is_sm90_supported()")
 
 
 def is_sm100_supported() -> bool:
-    return is_arch_supported(10, 0)
+    """TODO: implement `is_sm100_supported`. Read docs/code-map.md before coding."""
+    raise NotImplementedError("Teaching scaffold: implement is_sm100_supported()")

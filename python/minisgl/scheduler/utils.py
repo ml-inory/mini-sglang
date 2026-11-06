@@ -1,33 +1,32 @@
+"""Teaching scaffold for minisgl.scheduler.utils.
+
+Scaffold for minisgl.scheduler.utils.
+
+Every behavior is intentionally left for the learner. See:
+- docs/code-map.md for the subsystem map
+- docs/index.md for the recommended order
+"""
+
 from __future__ import annotations
 
-from dataclasses import dataclass
-from typing import TYPE_CHECKING, List
-
-import torch
-
-if TYPE_CHECKING:
-    from minisgl.core import SamplingParams
-
-    from .prefill import ChunkedReq
+from typing import Any
 
 
-@dataclass
 class PendingReq:
-    uid: int
-    input_ids: torch.Tensor
-    sampling_params: SamplingParams
-    chunked_req: ChunkedReq | None = None
+    """TODO: implement `PendingReq`."""
 
     @property
     def input_len(self) -> int:
-        return len(self.input_ids)
+        """TODO: implement `input_len`. Read docs/code-map.md before coding."""
+        raise NotImplementedError("Teaching scaffold: implement input_len()")
 
     @property
     def output_len(self) -> int:
-        return self.sampling_params.max_tokens
+        """TODO: implement `output_len`. Read docs/code-map.md before coding."""
+        raise NotImplementedError("Teaching scaffold: implement output_len()")
 
 
-@dataclass
 class ScheduleResult:
-    reqs: List[PendingReq]
-    output_indices: List[torch.Tensor]
+    """TODO: implement `ScheduleResult`."""
+
+    """TODO: replace this marker with the ScheduleResult implementation."""

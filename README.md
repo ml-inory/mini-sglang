@@ -1,186 +1,56 @@
 <p align="center">
-<img width="400" src="/assets/logo.png">
+<img width="320" alt="Mini-SGLang logo" src="assets/logo.png">
 </p>
 
-# Mini-SGLang
+# Mini-SGLang Teaching Repository
 
-A **lightweight yet high-performance** inference framework for Large Language Models.
+这是一个从 [mini-sglang](https://github.com/sgl-project/mini-sglang) 改造而来的教学仓。仓库保留完整的软件地图、模块边界、公开类与函数签名，但把具体实现替换成脚手架和 `NotImplementedError`。
 
----
+目标不是让你一次读完所有代码，而是让你沿着一条可运行的测试路径，从请求数据模型一路实现到 KV Cache、Radix Cache、调度器、模型执行、分布式通信和 OpenAI 兼容服务。
 
-Mini-SGLang is a compact implementation of [SGLang](https://github.com/sgl-project/sglang), designed to demystify the complexities of modern LLM serving systems. With a compact codebase of **~5,000 lines of Python**, it serves as both a capable inference engine and a transparent reference for researchers and developers.
+## 当前状态
 
-## ✨ Key Features
+- 所有 Python 模块和 CUDA/C++ 原生源文件都保留在原路径。
+- 脚手架模块不强制导入 `torch`、Transformers、CUDA 或其他重型依赖。
+- 默认 `pytest` 只检查教学仓是否完整，不会因为尚未完成练习而失败。
+- 章节练习默认跳过；设置 `MINISGL_RUN_EXERCISES=1` 后运行，才会进入 red-green 开发循环。
+- `docs/` 提供总路线、模块地图、各子系统讲义、测试指南和结课标准。
 
-- **High Performance**: Achieves state-of-the-art throughput and latency with advanced optimizations.
-- **Lightweight & Readable**: A clean, modular, and fully type-annotated codebase that is easy to understand and modify.
-- **Advanced Optimizations**:
-  - **Radix Cache**: Reuses KV cache for shared prefixes across requests.
-  - **Chunked Prefill**: Reduces peak memory usage for long-context serving.
-  - **Overlap Scheduling**: Hides CPU scheduling overhead with GPU computation.
-  - **Tensor Parallelism**: Scales inference across multiple GPUs.
-  - **Optimized Kernels**: Integrates **FlashAttention** and **FlashInfer** for maximum efficiency.
-  - ...
-
-## 🚀 Quick Start
-
-> **⚠️ Platform Support**: Mini-SGLang currently supports **Linux only** (x86_64 and aarch64). Windows and macOS are not supported due to dependencies on Linux-specific CUDA kernels (`sgl-kernel`, `flashinfer`). We recommend using [WSL2](https://learn.microsoft.com/en-us/windows/wsl/install) on Windows or Docker for cross-platform compatibility.
-
-### 1. Environment Setup
-
-We recommend using `uv` for a fast and reliable installation (note that `uv` does not conflict with `conda`).
+## 快速开始
 
 ```bash
-# Create a virtual environment (Python 3.10+ recommended)
-uv venv --python=3.12
+python -m venv .venv
 source .venv/bin/activate
+python -m pip install -U pip
+python -m pip install -e ".[dev]"
+
+# 检查教学仓自身
+python -m pytest -x -q
+
+# 开始第一章练习
+MINISGL_RUN_EXERCISES=1 python -m pytest tests/exercises -q
+
+# 查看脚手架入口
+python -m minisgl --help
 ```
 
-**Prerequisites**: Mini-SGLang relies on CUDA kernels that are JIT-compiled. Ensure you have the **NVIDIA CUDA Toolkit** installed and that its version matches your driver's version. You can check your driver's CUDA capability with `nvidia-smi`.
+高级章节需要 NVIDIA GPU、CUDA Toolkit、PyTorch 或对应模型运行时。请按 [环境与硬件](docs/environment.md) 的说明安装可选依赖，不要在本机环境不满足要求时强行运行 GPU 测试。
 
-### 2. Installation
+## 从这里开始
 
-Install Mini-SGLang directly from the source:
+1. 阅读 [课程首页](docs/index.md)，了解推荐顺序和学习方法。
+2. 阅读 [仓库与模块地图](docs/code-map.md)，在源码目录中标出每个子系统的位置。
+3. 完成 [基础训练](docs/foundations.md)，补齐 Python、张量、并发和测试基础。
+4. 按章节实现 [核心请求模型](docs/core-and-messages.md)、[KV Cache](docs/kv-cache.md) 和 [调度器](docs/scheduler.md)。
+5. 继续完成 [模型与层](docs/models-and-layers.md)、[引擎与分布式](docs/engine-and-distributed.md)、[服务链路](docs/serving.md) 和 [性能实验](docs/performance.md)。
+6. 用 [结课项目](docs/capstone.md) 做一次端到端验收。
 
-```bash
-git clone https://github.com/sgl-project/mini-sglang.git
-cd mini-sglang && uv venv --python=3.12 && source .venv/bin/activate
-uv pip install -e .
-```
+## 重要原则
 
-<details>
-<summary><b>💡 Installing on Windows (WSL2)</b></summary>
+不要一次实现整个仓库。每一章只实现当前公开契约和对应测试，保持测试通过后再进入下一章。脚手架中的方法签名和文档是接口线索，不是可以直接复制的答案。
 
-Since Mini-SGLang requires Linux-specific dependencies, Windows users should use WSL2:
+原始实现保存在 git 历史与 `main` 分支中。建议先独立实现，再把原仓库当作设计审阅材料，而不是参考答案。
 
-1. **Install WSL2** (if not already installed):
-   ```powershell
-   # In PowerShell (as Administrator)
-   wsl --install
-   ```
+## 许可证
 
-2. **Install CUDA on WSL2**:
-   - Follow [NVIDIA's WSL2 CUDA guide](https://docs.nvidia.com/cuda/wsl-user-guide/index.html)
-   - Ensure your Windows GPU drivers support WSL2
-
-3. **Install Mini-SGLang in WSL2**:
-   ```bash
-   # Inside WSL2 terminal
-   git clone https://github.com/sgl-project/mini-sglang.git
-   cd mini-sglang && uv venv --python=3.12 && source .venv/bin/activate
-   uv pip install -e .
-   ```
-
-4. **Access from Windows**: The server will be accessible at `http://localhost:8000` from Windows browsers and applications.
-
-</details>
-
-<details>
-<summary><b>🐳 Running with Docker</b></summary>
-
-**Prerequisites**:
-- [Docker](https://docs.docker.com/get-docker/)
-- [NVIDIA Container Toolkit](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/install-guide.html)
-
-1. **Build the Docker image**:
-   ```bash
-   docker build -t minisgl .
-   ```
-
-2. **Run the server**:
-   ```bash
-   docker run --gpus all -p 1919:1919 \
-       minisgl --model Qwen/Qwen3-0.6B --host 0.0.0.0
-   ```
-
-3. **Run in interactive shell mode**:
-   ```bash
-   docker run -it --gpus all \
-       minisgl --model Qwen/Qwen3-0.6B --shell
-   ```
-
-4. **Using Docker Volumes for persistent caches** (recommended for faster subsequent startups):
-   ```bash
-   docker run --gpus all -p 1919:1919 \
-       -v huggingface_cache:/app/.cache/huggingface \
-       -v tvm_cache:/app/.cache/tvm-ffi \
-       -v flashinfer_cache:/app/.cache/flashinfer \
-       minisgl --model Qwen/Qwen3-0.6B --host 0.0.0.0
-   ```
-
-</details>
-
-### 3. Online Serving
-
-Launch an OpenAI-compatible API server with a single command.
-
-```bash
-# Deploy Qwen/Qwen3-0.6B on a single GPU
-python -m minisgl --model "Qwen/Qwen3-0.6B"
-
-# Deploy meta-llama/Llama-3.1-70B-Instruct on 4 GPUs with Tensor Parallelism, on port 30000
-python -m minisgl --model "meta-llama/Llama-3.1-70B-Instruct" --tp 4 --port 30000
-```
-
-Once the server is running, you can send requests using standard tools like `curl` or any OpenAI-compatible client.
-
-### 4. Interactive Shell
-
-Chat with your model directly in the terminal by adding the `--shell` flag.
-
-```bash
-python -m minisgl --model "Qwen/Qwen3-0.6B" --shell
-```
-
-![shell-example](https://lmsys.org/images/blog/minisgl/shell.png)
-
-You can also use `/reset` to clear the chat history.
-
-## Benchmark
-
-### Offline inference
-
-See [bench.py](./benchmark/offline/bench.py) for more details. Set `MINISGL_DISABLE_OVERLAP_SCHEDULING=1` for ablation study on overlap scheduling.
-
-Test Configuration:
-
-- Hardware: 1xH200 GPU.
-- Model: Qwen3-0.6B, Qwen3-14B
-- Total Requests: 256 sequences
-- Input Length: Randomly sampled between 100-1024 tokens
-- Output Length: Randomly sampled between 100-1024 tokens
-
-![offline](https://lmsys.org/images/blog/minisgl/offline.png)
-
-### Online inference
-
-See [benchmark_qwen.py](./benchmark/online/bench_qwen.py) for more details.
-
-Test Configuration:
-
-- Hardware: 4xH200 GPU, connected by NVLink.
-- Model: Qwen3-32B
-- Dataset: [Qwen trace](https://github.com/alibaba-edu/qwen-bailian-usagetraces-anon/blob/main/qwen_traceA_blksz_16.jsonl), replaying first 1000 requests.
-
-Launch command:
-
-```bash
-# Mini-SGLang
-python -m minisgl --model "Qwen/Qwen3-32B" --tp 4 --cache naive
-
-# SGLang
-python3 -m sglang.launch_server --model "Qwen/Qwen3-32B" --tp 4 \
-    --disable-radix --port 1919 --decode-attention flashinfer
-```
-
-> **Note**: If you encounter network issues when downloading models from HuggingFace, try using `--model-source modelscope` to download from ModelScope instead:
-> ```bash
-> python -m minisgl --model "Qwen/Qwen3-32B" --tp 4 --model-source modelscope
-> ```
-
-![online](https://lmsys.org/images/blog/minisgl/online.png)
-
-## 📚 Learn More
-
-- **[Detailed Features](./docs/features.md)**: Explore all available features and command-line arguments.
-- **[System Architecture](./docs/structures.md)**: Dive deep into the design and data flow of Mini-SGLang.
+本教学仓继承原项目的 MIT License，见 [LICENSE](LICENSE)。

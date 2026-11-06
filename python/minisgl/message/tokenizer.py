@@ -1,43 +1,50 @@
+"""Teaching scaffold for minisgl.message.tokenizer.
+
+Scaffold for minisgl.message.tokenizer.
+
+Every behavior is intentionally left for the learner. See:
+- docs/code-map.md for the subsystem map
+- docs/index.md for the recommended order
+"""
+
 from __future__ import annotations
 
-from dataclasses import dataclass
-from typing import Dict, List
-
-from minisgl.core import SamplingParams
-
-from .utils import deserialize_type, serialize_type
+from typing import Any
 
 
-@dataclass
 class BaseTokenizerMsg:
+    """TODO: implement `BaseTokenizerMsg`."""
+
     @staticmethod
     def encoder(msg: BaseTokenizerMsg) -> Dict:
-        return serialize_type(msg)
+        """TODO: implement `encoder`. Read docs/code-map.md before coding."""
+        raise NotImplementedError("Teaching scaffold: implement encoder()")
 
     @staticmethod
     def decoder(json: Dict) -> BaseTokenizerMsg:
-        return deserialize_type(globals(), json)
+        """TODO: implement `decoder`. Read docs/code-map.md before coding."""
+        raise NotImplementedError("Teaching scaffold: implement decoder()")
 
 
-@dataclass
-class BatchTokenizerMsg(BaseTokenizerMsg):
-    data: List[BaseTokenizerMsg]
+class BatchTokenizerMsg:
+    """TODO: implement `BatchTokenizerMsg`. (original base: BaseTokenizerMsg)"""
+
+    """TODO: replace this marker with the BatchTokenizerMsg implementation."""
 
 
-@dataclass
-class DetokenizeMsg(BaseTokenizerMsg):
-    uid: int
-    next_token: int
-    finished: bool
+class DetokenizeMsg:
+    """TODO: implement `DetokenizeMsg`. (original base: BaseTokenizerMsg)"""
+
+    """TODO: replace this marker with the DetokenizeMsg implementation."""
 
 
-@dataclass
-class TokenizeMsg(BaseTokenizerMsg):
-    uid: int
-    text: str | List[Dict[str, str]]
-    sampling_params: SamplingParams
+class TokenizeMsg:
+    """TODO: implement `TokenizeMsg`. (original base: BaseTokenizerMsg)"""
+
+    """TODO: replace this marker with the TokenizeMsg implementation."""
 
 
-@dataclass
-class AbortMsg(BaseTokenizerMsg):
-    uid: int
+class AbortMsg:
+    """TODO: implement `AbortMsg`. (original base: BaseTokenizerMsg)"""
+
+    """TODO: replace this marker with the AbortMsg implementation."""

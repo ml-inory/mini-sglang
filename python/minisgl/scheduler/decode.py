@@ -1,39 +1,42 @@
+"""Teaching scaffold for minisgl.scheduler.decode.
+
+Scaffold for minisgl.scheduler.decode.
+
+Every behavior is intentionally left for the learner. See:
+- docs/code-map.md for the subsystem map
+- docs/index.md for the recommended order
+"""
+
 from __future__ import annotations
 
-from dataclasses import dataclass, field
-from typing import Iterable, Set
-
-from minisgl.core import Batch, Req
+from typing import Any
 
 
-@dataclass
 class DecodeManager:
-    page_size: int
-    running_reqs: Set[Req] = field(default_factory=set)
+    """TODO: implement `DecodeManager`."""
 
     def filter_reqs(self, reqs: Iterable[Req]) -> None:
-        self.running_reqs = {req for req in self.running_reqs.union(reqs) if req.can_decode}
+        """TODO: implement `filter_reqs`. Read docs/code-map.md before coding."""
+        raise NotImplementedError("Teaching scaffold: implement filter_reqs()")
 
     def remove_req(self, req: Req) -> None:
-        self.running_reqs.discard(req)
+        """TODO: implement `remove_req`. Read docs/code-map.md before coding."""
+        raise NotImplementedError("Teaching scaffold: implement remove_req()")
 
     def abort_req(self, uid: int) -> Req | None:
-        for req in self.running_reqs:
-            if req.uid == uid:
-                self.running_reqs.remove(req)
-                return req
-        return None
+        """TODO: implement `abort_req`. Read docs/code-map.md before coding."""
+        raise NotImplementedError("Teaching scaffold: implement abort_req()")
 
     @property
     def inflight_tokens(self) -> int:
-        tokens_reserved = (self.page_size - 1) * len(self.running_reqs)  # 1 page reserved
-        return sum(req.remain_len for req in self.running_reqs) + tokens_reserved
+        """TODO: implement `inflight_tokens`. Read docs/code-map.md before coding."""
+        raise NotImplementedError("Teaching scaffold: implement inflight_tokens()")
 
     def schedule_next_batch(self) -> Batch | None:
-        if not self.runnable:
-            return None
-        return Batch(reqs=sorted(self.running_reqs, key=lambda req: req.uid), phase="decode")
+        """TODO: implement `schedule_next_batch`. Read docs/code-map.md before coding."""
+        raise NotImplementedError("Teaching scaffold: implement schedule_next_batch()")
 
     @property
     def runnable(self) -> bool:
-        return len(self.running_reqs) > 0
+        """TODO: implement `runnable`. Read docs/code-map.md before coding."""
+        raise NotImplementedError("Teaching scaffold: implement runnable()")

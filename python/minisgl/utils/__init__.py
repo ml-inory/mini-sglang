@@ -1,3 +1,16 @@
+"""Teaching scaffold for minisgl.utils.
+
+Scaffold for minisgl.utils.
+
+Every behavior is intentionally left for the learner. See:
+- docs/code-map.md for the subsystem map
+- docs/index.md for the recommended order
+"""
+
+from __future__ import annotations
+
+from typing import Any
+
 from .arch import is_arch_supported, is_sm90_supported, is_sm100_supported
 from .hf import cached_load_hf_config, download_hf_weight, load_tokenizer
 from .logger import init_logger

@@ -1,48 +1,46 @@
+"""Teaching scaffold for minisgl.utils.misc.
+
+Scaffold for minisgl.utils.misc.
+
+Every behavior is intentionally left for the learner. See:
+- docs/code-map.md for the subsystem map
+- docs/index.md for the recommended order
+"""
+
 from __future__ import annotations
+
+from typing import Any
 
 
 def call_if_main(name: str = "__main__", discard: bool | None = None):
     """Decorator to ensure a function will call when the script is run as main."""
-    if name != "__main__":
-        discard = False if discard is None else discard
-        if discard:
-            return lambda _: None
-        else:
-            return lambda f: f
-    else:
-        discard = True if discard is None else discard
-        if discard:
-            return lambda f: (f() or True) and None
-        else:
-            return lambda f: (f() and None) or f
+    raise NotImplementedError("Teaching scaffold: implement call_if_main()")
 
 
 def div_even(a: int, b: int, allow_replicate: bool = False) -> int:
     """Divides two integers. If allow_replicate=True, allows b > a when b % a == 0, returning 1."""
-    if allow_replicate and b > a:
-        assert b % a == 0, f"{b = } must be divisible by {a = } for KV head replication"
-        return 1
-    assert a % b == 0, f"{a = } must be divisible by {b = }"
-    return a // b
+    raise NotImplementedError("Teaching scaffold: implement div_even()")
 
 
 def div_ceil(a: int, b: int) -> int:
     """Divides two integers, rounding up"""
-    return (a + b - 1) // b
+    raise NotImplementedError("Teaching scaffold: implement div_ceil()")
 
 
 def align_ceil(a: int, b: int) -> int:
     """Aligns a to the next multiple of b"""
-    return div_ceil(a, b) * b
+    raise NotImplementedError("Teaching scaffold: implement align_ceil()")
 
 
 def align_down(a: int, b: int) -> int:
     """Aligns a to the previous multiple of b"""
-    return (a // b) * b
+    raise NotImplementedError("Teaching scaffold: implement align_down()")
 
 
 class Unset:
-    pass
+    """TODO: implement `Unset`."""
+
+    """TODO: replace this marker with the Unset implementation."""
 
 
-UNSET = Unset()
+UNSET: Any = None

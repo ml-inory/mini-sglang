@@ -1,12 +1,20 @@
-import torch
-from minisgl.core import get_global_ctx
-from minisgl.distributed import DistributedCommunicator, get_tp_info
-from minisgl.utils import div_even
+"""Teaching scaffold for minisgl.layers.moe.
 
-from .base import BaseOP
+Scaffold for minisgl.layers.moe.
+
+Every behavior is intentionally left for the learner. See:
+- docs/code-map.md for the subsystem map
+- docs/index.md for the recommended order
+"""
+
+from __future__ import annotations
+
+from typing import Any
 
 
-class MoELayer(BaseOP):
+class MoELayer:
+    """TODO: implement `MoELayer`. (original base: BaseOP)"""
+
     def __init__(
         self,
         num_experts: int,
@@ -17,43 +25,9 @@ class MoELayer(BaseOP):
         activation: str = "silu",
         apply_router_weight_on_input: bool = False,
     ):
-        super().__init__()
-
-        self.num_experts = num_experts
-        self.top_k = top_k
-        self.hidden_size = hidden_size
-        self.intermediate_size = intermediate_size
-        self._comm = DistributedCommunicator()
-
-        tp_info = get_tp_info()
-        self.tp_size = tp_size = tp_info.size
-        self.renormalize = renormalize
-        self.activation = activation
-        self.apply_router_weight_on_input = apply_router_weight_on_input
-        intermediate_size_per_partition = div_even(intermediate_size, tp_size)
-        self.gate_up_proj = torch.empty(
-            num_experts,
-            2 * intermediate_size_per_partition,
-            hidden_size,
-        )
-        self.down_proj = torch.empty(
-            num_experts,
-            hidden_size,
-            intermediate_size_per_partition,
-        )
+        """TODO: implement `__init__`. Read docs/code-map.md before coding."""
+        raise NotImplementedError("Teaching scaffold: implement __init__()")
 
     def forward(self, hidden_states: torch.Tensor, router_logits: torch.Tensor):
-        ctx = get_global_ctx()
-        final_hidden_states = ctx.moe_backend.forward(
-            hidden_states=hidden_states,
-            w1=self.gate_up_proj,
-            w2=self.down_proj,
-            gating_output=router_logits,
-            topk=self.top_k,
-            renormalize=self.renormalize,
-            activation=self.activation,
-            apply_router_weight_on_input=self.apply_router_weight_on_input,
-        )
-        if self.tp_size > 1:
-            final_hidden_states = self._comm.all_reduce(final_hidden_states)
-        return final_hidden_states
+        """TODO: implement `forward`. Read docs/code-map.md before coding."""
+        raise NotImplementedError("Teaching scaffold: implement forward()")

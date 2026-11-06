@@ -1,45 +1,61 @@
-import torch
+"""Teaching scaffold for minisgl.kvcache.naive_cache.
 
-from .base import BaseCacheHandle, BasePrefixCache, InsertResult, MatchResult, SizeInfo
+Scaffold for minisgl.kvcache.naive_cache.
+
+Every behavior is intentionally left for the learner. See:
+- docs/code-map.md for the subsystem map
+- docs/index.md for the recommended order
+"""
+
+from __future__ import annotations
+
+from typing import Any
 
 
-class NaiveCacheHandle(BaseCacheHandle):
-    empty_tensor: torch.Tensor  # should be set by NaivePrefixCache
+class NaiveCacheHandle:
+    """TODO: implement `NaiveCacheHandle`. (original base: BaseCacheHandle)"""
 
     def __init__(self):
-        super().__init__(cached_len=0)
+        """TODO: implement `__init__`. Read docs/code-map.md before coding."""
+        raise NotImplementedError("Teaching scaffold: implement __init__()")
 
     def get_matched_indices(self) -> torch.Tensor:
-        return self.empty_tensor
+        """TODO: implement `get_matched_indices`. Read docs/code-map.md before coding."""
+        raise NotImplementedError("Teaching scaffold: implement get_matched_indices()")
 
 
-class NaivePrefixCache(BasePrefixCache):
+class NaivePrefixCache:
+    """TODO: implement `NaivePrefixCache`. (original base: BasePrefixCache)"""
+
     def __init__(self, device: torch.device):
-        self.device = device
-        self.empty_tensor = torch.empty(0, dtype=torch.int32, device=device)
-        NaiveCacheHandle.empty_tensor = self.empty_tensor
-        super().__init__()
+        """TODO: implement `__init__`. Read docs/code-map.md before coding."""
+        raise NotImplementedError("Teaching scaffold: implement __init__()")
 
     def lock_handle(self, handle: BaseCacheHandle, unlock: bool = False) -> None:
-        pass
+        """TODO: implement `lock_handle`. Read docs/code-map.md before coding."""
+        raise NotImplementedError("Teaching scaffold: implement lock_handle()")
 
     def match_prefix(self, input_ids: torch.Tensor) -> MatchResult:
-        return MatchResult(NaiveCacheHandle())
+        """TODO: implement `match_prefix`. Read docs/code-map.md before coding."""
+        raise NotImplementedError("Teaching scaffold: implement match_prefix()")
 
     def insert_prefix(self, input_ids: torch.Tensor, indices: torch.Tensor) -> InsertResult:
-        return InsertResult(0, NaiveCacheHandle())
+        """TODO: implement `insert_prefix`. Read docs/code-map.md before coding."""
+        raise NotImplementedError("Teaching scaffold: implement insert_prefix()")
 
     def evict(self, size: int) -> torch.Tensor:
-        if size == 0:
-            return self.empty_tensor
-        raise NotImplementedError("NaiveCacheManager does not support eviction.")
+        """TODO: implement `evict`. Read docs/code-map.md before coding."""
+        raise NotImplementedError("Teaching scaffold: implement evict()")
 
     def reset(self) -> None:
-        pass
+        """TODO: implement `reset`. Read docs/code-map.md before coding."""
+        raise NotImplementedError("Teaching scaffold: implement reset()")
 
     @property
     def size_info(self) -> SizeInfo:
-        return SizeInfo(evictable_size=0, protected_size=0)
+        """TODO: implement `size_info`. Read docs/code-map.md before coding."""
+        raise NotImplementedError("Teaching scaffold: implement size_info()")
 
     def check_integrity(self) -> None:
-        pass
+        """TODO: implement `check_integrity`. Read docs/code-map.md before coding."""
+        raise NotImplementedError("Teaching scaffold: implement check_integrity()")

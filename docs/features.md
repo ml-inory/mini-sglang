@@ -1,5 +1,9 @@
 # Features of Mini-SGLang
 
+> **Teaching scaffold note:** this page describes the target feature set of the original
+> project. This repository intentionally leaves those features unimplemented. Start with
+> [the curriculum](index.md) and use this page as a feature checklist.
+
 ## Online Serving
 
 Mini-SGLang supports online serving with an OpenAI-compatible API server. It provides the standard `/v1/chat/completions` endpoint, allowing seamless integration with existing tools and clients. For detailed command-line arguments and configuration options, run `python -m minisgl --help`.

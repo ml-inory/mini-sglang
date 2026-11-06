@@ -1,38 +1,49 @@
+"""Teaching scaffold for minisgl.distributed.info.
+
+Scaffold for minisgl.distributed.info.
+
+Every behavior is intentionally left for the learner. See:
+- docs/code-map.md for the subsystem map
+- docs/index.md for the recommended order
+"""
+
 from __future__ import annotations
 
-from dataclasses import dataclass
+from typing import Any
 
 
-@dataclass(frozen=True)
-class DistributedInfo:  # should not export from here
-    rank: int
-    size: int
+class DistributedInfo:
+    """TODO: implement `DistributedInfo`."""
 
     def __post_init__(self):
-        assert 0 <= self.rank < self.size
+        """TODO: implement `__post_init__`. Read docs/code-map.md before coding."""
+        raise NotImplementedError("Teaching scaffold: implement __post_init__()")
 
     def is_primary(self) -> bool:
-        return self.rank == 0
-
-
-_TP_INFO: DistributedInfo | None = None
+        """TODO: implement `is_primary`. Read docs/code-map.md before coding."""
+        raise NotImplementedError("Teaching scaffold: implement is_primary()")
 
 
 def set_tp_info(rank: int, size: int) -> None:
-    global _TP_INFO
-    if _TP_INFO is not None:
-        raise RuntimeError("TP info has been set")
-    _TP_INFO = DistributedInfo(rank, size)
+    """TODO: implement `set_tp_info`. Read docs/code-map.md before coding."""
+    raise NotImplementedError("Teaching scaffold: implement set_tp_info()")
 
 
 def get_tp_info() -> DistributedInfo:
-    if _TP_INFO is None:
-        raise RuntimeError("TP info has not been set")
-    return _TP_INFO
+    """TODO: implement `get_tp_info`. Read docs/code-map.md before coding."""
+    raise NotImplementedError("Teaching scaffold: implement get_tp_info()")
 
 
 def try_get_tp_info() -> DistributedInfo | None:
-    return _TP_INFO
+    """TODO: implement `try_get_tp_info`. Read docs/code-map.md before coding."""
+    raise NotImplementedError("Teaching scaffold: implement try_get_tp_info()")
 
 
-__all__ = ["DistributedInfo", "set_tp_info", "get_tp_info", "try_get_tp_info"]
+_TP_INFO: Any = None
+
+__all__ = [
+    "DistributedInfo",
+    "set_tp_info",
+    "get_tp_info",
+    "try_get_tp_info",
+]

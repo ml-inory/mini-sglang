@@ -1,151 +1,131 @@
+"""Teaching scaffold for minisgl.utils.mp.
+
+Scaffold for minisgl.utils.mp.
+
+Every behavior is intentionally left for the learner. See:
+- docs/code-map.md for the subsystem map
+- docs/index.md for the recommended order
+"""
+
 from __future__ import annotations
 
-from typing import Callable, Dict, Generic, TypeVar
-
-import msgpack
-import zmq
-import zmq.asyncio
-
-T = TypeVar("T")
+from typing import Any
 
 
-class ZmqPushQueue(Generic[T]):
-    def __init__(
-        self,
-        addr: str,
-        create: bool,
-        encoder: Callable[[T], Dict],
-    ):
-        self.context = zmq.Context()
-        self.socket = self.context.socket(zmq.PUSH)
-        self.socket.bind(addr) if create else self.socket.connect(addr)
-        self.encoder = encoder
+class ZmqPushQueue:
+    """TODO: implement `ZmqPushQueue`. (original base: Generic[T])"""
+
+    def __init__(self, addr: str, create: bool, encoder: Callable[[T], Dict]):
+        """TODO: implement `__init__`. Read docs/code-map.md before coding."""
+        raise NotImplementedError("Teaching scaffold: implement __init__()")
 
     def put(self, obj: T):
-        event = msgpack.packb(self.encoder(obj), use_bin_type=True)
-        self.socket.send(event, copy=False)
+        """TODO: implement `put`. Read docs/code-map.md before coding."""
+        raise NotImplementedError("Teaching scaffold: implement put()")
 
     def stop(self):
-        self.socket.close()
-        self.context.term()
+        """TODO: implement `stop`. Read docs/code-map.md before coding."""
+        raise NotImplementedError("Teaching scaffold: implement stop()")
 
 
-class ZmqAsyncPushQueue(Generic[T]):
-    def __init__(
-        self,
-        addr: str,
-        create: bool,
-        encoder: Callable[[T], Dict],
-    ):
-        self.context = zmq.asyncio.Context()
-        self.socket = self.context.socket(zmq.PUSH)
-        self.socket.bind(addr) if create else self.socket.connect(addr)
-        self.encoder = encoder
+class ZmqAsyncPushQueue:
+    """TODO: implement `ZmqAsyncPushQueue`. (original base: Generic[T])"""
+
+    def __init__(self, addr: str, create: bool, encoder: Callable[[T], Dict]):
+        """TODO: implement `__init__`. Read docs/code-map.md before coding."""
+        raise NotImplementedError("Teaching scaffold: implement __init__()")
 
     async def put(self, obj: T):
-        event = msgpack.packb(self.encoder(obj), use_bin_type=True)
-        await self.socket.send(event, copy=False)
+        """TODO: implement `put`. Read docs/code-map.md before coding."""
+        raise NotImplementedError("Teaching scaffold: implement put()")
 
     def stop(self):
-        self.socket.close()
-        self.context.term()
+        """TODO: implement `stop`. Read docs/code-map.md before coding."""
+        raise NotImplementedError("Teaching scaffold: implement stop()")
 
 
-class ZmqPullQueue(Generic[T]):
-    def __init__(
-        self,
-        addr: str,
-        create: bool,
-        decoder: Callable[[Dict], T],
-    ):
-        self.context = zmq.Context()
-        self.socket = self.context.socket(zmq.PULL)
-        self.socket.bind(addr) if create else self.socket.connect(addr)
-        self.decoder = decoder
+class ZmqPullQueue:
+    """TODO: implement `ZmqPullQueue`. (original base: Generic[T])"""
+
+    def __init__(self, addr: str, create: bool, decoder: Callable[[Dict], T]):
+        """TODO: implement `__init__`. Read docs/code-map.md before coding."""
+        raise NotImplementedError("Teaching scaffold: implement __init__()")
 
     def get(self) -> T:
-        event = self.socket.recv()
-        return self.decoder(msgpack.unpackb(event, raw=False))
+        """TODO: implement `get`. Read docs/code-map.md before coding."""
+        raise NotImplementedError("Teaching scaffold: implement get()")
 
     def get_raw(self) -> bytes:
-        return self.socket.recv()
+        """TODO: implement `get_raw`. Read docs/code-map.md before coding."""
+        raise NotImplementedError("Teaching scaffold: implement get_raw()")
 
     def decode(self, raw: bytes) -> T:
-        return self.decoder(msgpack.unpackb(raw, raw=False))
+        """TODO: implement `decode`. Read docs/code-map.md before coding."""
+        raise NotImplementedError("Teaching scaffold: implement decode()")
 
     def empty(self) -> bool:
-        return self.socket.poll(timeout=0) == 0
+        """TODO: implement `empty`. Read docs/code-map.md before coding."""
+        raise NotImplementedError("Teaching scaffold: implement empty()")
 
     def stop(self):
-        self.socket.close()
-        self.context.term()
+        """TODO: implement `stop`. Read docs/code-map.md before coding."""
+        raise NotImplementedError("Teaching scaffold: implement stop()")
 
 
-class ZmqAsyncPullQueue(Generic[T]):
-    def __init__(
-        self,
-        addr: str,
-        create: bool,
-        decoder: Callable[[Dict], T],
-    ):
-        self.context = zmq.asyncio.Context()
-        self.socket = self.context.socket(zmq.PULL)
-        self.socket.bind(addr) if create else self.socket.connect(addr)
-        self.decoder = decoder
+class ZmqAsyncPullQueue:
+    """TODO: implement `ZmqAsyncPullQueue`. (original base: Generic[T])"""
+
+    def __init__(self, addr: str, create: bool, decoder: Callable[[Dict], T]):
+        """TODO: implement `__init__`. Read docs/code-map.md before coding."""
+        raise NotImplementedError("Teaching scaffold: implement __init__()")
 
     async def get(self) -> T:
-        event = await self.socket.recv()
-        return self.decoder(msgpack.unpackb(event, raw=False))
+        """TODO: implement `get`. Read docs/code-map.md before coding."""
+        raise NotImplementedError("Teaching scaffold: implement get()")
 
     def stop(self):
-        self.socket.close()
-        self.context.term()
+        """TODO: implement `stop`. Read docs/code-map.md before coding."""
+        raise NotImplementedError("Teaching scaffold: implement stop()")
 
 
-class ZmqPubQueue(Generic[T]):
-    def __init__(
-        self,
-        addr: str,
-        create: bool,
-        encoder: Callable[[T], Dict],
-    ):
-        self.context = zmq.Context()
-        self.socket = self.context.socket(zmq.PUB)
-        self.socket.bind(addr) if create else self.socket.connect(addr)
-        self.encoder = encoder
+class ZmqPubQueue:
+    """TODO: implement `ZmqPubQueue`. (original base: Generic[T])"""
+
+    def __init__(self, addr: str, create: bool, encoder: Callable[[T], Dict]):
+        """TODO: implement `__init__`. Read docs/code-map.md before coding."""
+        raise NotImplementedError("Teaching scaffold: implement __init__()")
 
     def put_raw(self, raw: bytes):
-        self.socket.send(raw, copy=False)
+        """TODO: implement `put_raw`. Read docs/code-map.md before coding."""
+        raise NotImplementedError("Teaching scaffold: implement put_raw()")
 
     def put(self, obj: T):
-        event = msgpack.packb(self.encoder(obj), use_bin_type=True)
-        self.socket.send(event, copy=False)
+        """TODO: implement `put`. Read docs/code-map.md before coding."""
+        raise NotImplementedError("Teaching scaffold: implement put()")
 
     def stop(self):
-        self.socket.close()
-        self.context.term()
+        """TODO: implement `stop`. Read docs/code-map.md before coding."""
+        raise NotImplementedError("Teaching scaffold: implement stop()")
 
 
-class ZmqSubQueue(Generic[T]):
-    def __init__(
-        self,
-        addr: str,
-        create: bool,
-        decoder: Callable[[Dict], T],
-    ):
-        self.context = zmq.Context()
-        self.socket = self.context.socket(zmq.SUB)
-        self.socket.bind(addr) if create else self.socket.connect(addr)
-        self.socket.setsockopt_string(zmq.SUBSCRIBE, "")
-        self.decoder = decoder
+class ZmqSubQueue:
+    """TODO: implement `ZmqSubQueue`. (original base: Generic[T])"""
+
+    def __init__(self, addr: str, create: bool, decoder: Callable[[Dict], T]):
+        """TODO: implement `__init__`. Read docs/code-map.md before coding."""
+        raise NotImplementedError("Teaching scaffold: implement __init__()")
 
     def get(self) -> T:
-        event = self.socket.recv()
-        return self.decoder(msgpack.unpackb(event, raw=False))
+        """TODO: implement `get`. Read docs/code-map.md before coding."""
+        raise NotImplementedError("Teaching scaffold: implement get()")
 
     def empty(self) -> bool:
-        return self.socket.poll(timeout=0) == 0
+        """TODO: implement `empty`. Read docs/code-map.md before coding."""
+        raise NotImplementedError("Teaching scaffold: implement empty()")
 
     def stop(self):
-        self.socket.close()
-        self.context.term()
+        """TODO: implement `stop`. Read docs/code-map.md before coding."""
+        raise NotImplementedError("Teaching scaffold: implement stop()")
+
+
+T: Any = None

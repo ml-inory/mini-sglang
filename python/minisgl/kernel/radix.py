@@ -1,20 +1,22 @@
+"""Teaching scaffold for minisgl.kernel.radix.
+
+Scaffold for minisgl.kernel.radix.
+
+Every behavior is intentionally left for the learner. See:
+- docs/code-map.md for the subsystem map
+- docs/index.md for the recommended order
+"""
+
 from __future__ import annotations
 
-import functools
-from typing import TYPE_CHECKING
-
-from .utils import load_aot
-
-if TYPE_CHECKING:
-    import torch
-    from tvm_ffi import Module
+from typing import Any
 
 
-@functools.cache
 def _load_radix_module() -> Module:
-    return load_aot("radix", cpp_files=["radix.cpp"])
+    """TODO: implement `_load_radix_module`. Read docs/code-map.md before coding."""
+    raise NotImplementedError("Teaching scaffold: implement _load_radix_module()")
 
 
 def fast_compare_key(x: torch.Tensor, y: torch.Tensor) -> int:
-    # compare 2 1-D int cpu tensors for equality
-    return _load_radix_module().fast_compare_key(x, y)
+    """TODO: implement `fast_compare_key`. Read docs/code-map.md before coding."""
+    raise NotImplementedError("Teaching scaffold: implement fast_compare_key()")

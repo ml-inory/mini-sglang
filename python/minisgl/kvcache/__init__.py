@@ -1,27 +1,27 @@
+"""Teaching scaffold for minisgl.kvcache.
+
+Scaffold for minisgl.kvcache.
+
+Every behavior is intentionally left for the learner. See:
+- docs/code-map.md for the subsystem map
+- docs/index.md for the recommended order
+"""
+
 from __future__ import annotations
 
-from typing import TYPE_CHECKING, Protocol
+from typing import Any
 
 from minisgl.utils import Registry
 
-if TYPE_CHECKING:
-    import torch
-    from minisgl.models import ModelConfig
-
-from .base import (
-    BaseCacheHandle,
-    BaseKVCachePool,
-    BasePrefixCache,
-    MatchResult,
-    SizeInfo,
-)
+from .base import BaseCacheHandle, BaseKVCachePool, BasePrefixCache, MatchResult, SizeInfo
 
 
-class CacheManagerCreator(Protocol):
-    def __call__(self, device: torch.device) -> BasePrefixCache: ...
+class CacheManagerCreator:
+    """TODO: implement `CacheManagerCreator`. (original base: Protocol)"""
 
-
-SUPPORTED_CACHE_MANAGER = Registry[CacheManagerCreator]("Cache Manager")
+    def __call__(self, device: torch.device) -> BasePrefixCache:
+        """TODO: implement `__call__`. Read docs/code-map.md before coding."""
+        raise NotImplementedError("Teaching scaffold: implement __call__()")
 
 
 def create_kvcache_pool(
@@ -31,36 +31,26 @@ def create_kvcache_pool(
     dtype: torch.dtype,
     device: torch.device,
 ) -> BaseKVCachePool:
-    from .mha_pool import MHAKVCache  # TODO: support other variants (e.g. MLA)
-
-    return MHAKVCache(
-        num_kv_heads=model_config.num_kv_heads,
-        num_pages=num_pages,
-        page_size=page_size,
-        num_layers=model_config.num_layers,
-        head_dim=model_config.head_dim,
-        device=device,
-        dtype=dtype,
-    )
+    """TODO: implement `create_kvcache_pool`. Read docs/code-map.md before coding."""
+    raise NotImplementedError("Teaching scaffold: implement create_kvcache_pool()")
 
 
-@SUPPORTED_CACHE_MANAGER.register("naive")
 def create_naive_cache(device: torch.device):
-    from .naive_cache import NaivePrefixCache
+    """TODO: implement `create_naive_cache`. Read docs/code-map.md before coding."""
+    raise NotImplementedError("Teaching scaffold: implement create_naive_cache()")
 
-    return NaivePrefixCache(device=device)
 
-
-@SUPPORTED_CACHE_MANAGER.register("radix")
 def create_radix_cache(device: torch.device):
-    from .radix_cache import RadixPrefixCache
-
-    return RadixPrefixCache(device=device)
+    """TODO: implement `create_radix_cache`. Read docs/code-map.md before coding."""
+    raise NotImplementedError("Teaching scaffold: implement create_radix_cache()")
 
 
 def create_prefix_cache(device: torch.device, type: str) -> BasePrefixCache:
-    return SUPPORTED_CACHE_MANAGER[type](device)
+    """TODO: implement `create_prefix_cache`. Read docs/code-map.md before coding."""
+    raise NotImplementedError("Teaching scaffold: implement create_prefix_cache()")
 
+
+SUPPORTED_CACHE_MANAGER: Any = None
 
 __all__ = [
     "create_kvcache_pool",

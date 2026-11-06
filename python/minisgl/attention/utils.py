@@ -1,23 +1,21 @@
-from dataclasses import dataclass
+"""Teaching scaffold for minisgl.attention.utils.
 
-import torch
+Scaffold for minisgl.attention.utils.
+
+Every behavior is intentionally left for the learner. See:
+- docs/code-map.md for the subsystem map
+- docs/index.md for the recommended order
+"""
+
+from __future__ import annotations
+
+from typing import Any
 
 
-@dataclass
 class BaseCaptureData:
-    seq_lens: torch.Tensor
-    positions: torch.Tensor
-    cu_seqlens_k: torch.Tensor
-    cu_seqlens_q: torch.Tensor
-    page_table: torch.Tensor
+    """TODO: implement `BaseCaptureData`."""
 
     @classmethod
     def create(cls, max_bs: int, max_seq_len: int, device: torch.device, **kwargs):
-        return cls(
-            seq_lens=torch.ones((max_bs,), dtype=torch.int32, device=device),
-            positions=torch.zeros((max_bs,), dtype=torch.int32, device=device),
-            cu_seqlens_k=torch.arange(0, max_bs + 1, dtype=torch.int32, device=device),
-            cu_seqlens_q=torch.arange(0, max_bs + 1, dtype=torch.int32, device=device),
-            page_table=torch.zeros((max_bs, max_seq_len), dtype=torch.int32, device=device),
-            **kwargs,
-        )
+        """TODO: implement `create`. Read docs/code-map.md before coding."""
+        raise NotImplementedError("Teaching scaffold: implement create()")

@@ -1,82 +1,44 @@
+"""Teaching scaffold for minisgl.models.utils.
+
+Scaffold for minisgl.models.utils.
+
+Every behavior is intentionally left for the learner. See:
+- docs/code-map.md for the subsystem map
+- docs/index.md for the recommended order
+"""
+
 from __future__ import annotations
 
-from typing import TYPE_CHECKING
-
-from minisgl.layers import (
-    AttentionLayer,
-    BaseOP,
-    LinearColParallelMerged,
-    LinearOProj,
-    LinearQKVMerged,
-    LinearReplicated,
-    LinearRowParallel,
-    MoELayer,
-    RMSNorm,
-    gelu_and_mul,
-    silu_and_mul,
-)
-from minisgl.models import ModelConfig
-from minisgl.utils import nvtx_annotate
-
-if TYPE_CHECKING:
-    import torch
+from typing import Any
 
 
-class GatedMLP(BaseOP):
+class GatedMLP:
+    """TODO: implement `GatedMLP`. (original base: BaseOP)"""
+
     def __init__(self, config: ModelConfig):
-        self.gate_up_proj = LinearColParallelMerged(
-            config.hidden_size,
-            [config.intermediate_size, config.intermediate_size],
-            has_bias=False,
-        )
+        """TODO: implement `__init__`. Read docs/code-map.md before coding."""
+        raise NotImplementedError("Teaching scaffold: implement __init__()")
 
-        FN_MAP = {"silu": silu_and_mul, "gelu": gelu_and_mul}
-        act_fn = FN_MAP.get(config.hidden_act, None)
-        if act_fn is None:
-            raise ValueError(f"Unsupported activation function: {config.hidden_act}")
-        self.act_fn = act_fn
-        self.down_proj = LinearRowParallel(
-            config.intermediate_size,
-            config.hidden_size,
-            has_bias=False,
-        )
-
-    @nvtx_annotate("MLP")
     def forward(self, x: torch.Tensor) -> torch.Tensor:
-        gate_up = self.gate_up_proj.forward(x)
-        del x
-        y = self.act_fn(gate_up)
-        del gate_up
-        return self.down_proj.forward(y)
+        """TODO: implement `forward`. Read docs/code-map.md before coding."""
+        raise NotImplementedError("Teaching scaffold: implement forward()")
 
 
-class MoEMLP(BaseOP):
+class MoEMLP:
+    """TODO: implement `MoEMLP`. (original base: BaseOP)"""
+
     def __init__(self, config: ModelConfig):
-        self.experts = MoELayer(
-            num_experts=config.num_experts,
-            top_k=config.num_experts_per_tok,
-            hidden_size=config.hidden_size,
-            intermediate_size=config.moe_intermediate_size,
-            renormalize=config.norm_topk_prob,
-        )
-        self.gate = LinearReplicated(
-            config.hidden_size,
-            config.num_experts,
-            has_bias=False,
-        )
+        """TODO: implement `__init__`. Read docs/code-map.md before coding."""
+        raise NotImplementedError("Teaching scaffold: implement __init__()")
 
     def forward(self, hidden_states: torch.Tensor) -> torch.Tensor:
-        num_tokens, hidden_dim = hidden_states.shape
-        hidden_states = hidden_states.view(-1, hidden_dim)
-        router_logits = self.gate.forward(hidden_states)
-        final_hidden_states = self.experts.forward(
-            hidden_states=hidden_states, router_logits=router_logits
-        )
-        final_hidden_states = final_hidden_states.view(num_tokens, hidden_dim)
-        return final_hidden_states
+        """TODO: implement `forward`. Read docs/code-map.md before coding."""
+        raise NotImplementedError("Teaching scaffold: implement forward()")
 
 
-class RopeAttn(BaseOP):
+class RopeAttn:
+    """TODO: implement `RopeAttn`. (original base: BaseOP)"""
+
     def __init__(
         self,
         config: ModelConfig,
@@ -85,42 +47,16 @@ class RopeAttn(BaseOP):
         has_attn_bias: bool = False,
         has_qk_norm: bool = False,
     ):
-        head_dim = config.head_dim
-        self.qkv_proj = LinearQKVMerged(
-            hidden_size=config.hidden_size,
-            head_dim=config.head_dim,
-            num_qo_heads=config.num_qo_heads,
-            num_kv_heads=config.num_kv_heads,
-            has_bias=has_attn_bias,
-        )
-        self.has_qk_norm = has_qk_norm
-        if has_qk_norm:
-            self.q_norm = RMSNorm(head_dim, eps=config.rms_norm_eps)
-            self.k_norm = RMSNorm(head_dim, eps=config.rms_norm_eps)
-        else:
-            self.q_norm = None
-            self.k_norm = None
-        self.attn = AttentionLayer(
-            layer_id=layer_id,
-            head_dim=head_dim,
-            num_qo_heads=config.num_qo_heads,
-            num_kv_heads=config.num_kv_heads,
-            rotary_config=config.rotary_config,
-            q_norm=self.q_norm,
-            k_norm=self.k_norm,
-        )
-        self.o_proj = LinearOProj(
-            head_dim * config.num_qo_heads,
-            config.hidden_size,
-            has_bias=False,
-        )
+        """TODO: implement `__init__`. Read docs/code-map.md before coding."""
+        raise NotImplementedError("Teaching scaffold: implement __init__()")
 
-    @nvtx_annotate("MHA")
     def forward(self, x: torch.Tensor) -> torch.Tensor:
-        qkv = self.qkv_proj.forward(x)
-        del x
-        o = self.attn.forward(qkv)
-        return self.o_proj.forward(o)
+        """TODO: implement `forward`. Read docs/code-map.md before coding."""
+        raise NotImplementedError("Teaching scaffold: implement forward()")
 
 
-__all__ = ["GatedMLP", "RopeAttn", "MoEMLP"]
+__all__ = [
+    "GatedMLP",
+    "RopeAttn",
+    "MoEMLP",
+]

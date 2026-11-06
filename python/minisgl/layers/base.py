@@ -1,99 +1,75 @@
+"""Teaching scaffold for minisgl.layers.base.
+
+Scaffold for minisgl.layers.base.
+
+Every behavior is intentionally left for the learner. See:
+- docs/code-map.md for the subsystem map
+- docs/index.md for the recommended order
+"""
+
 from __future__ import annotations
 
-from abc import abstractmethod
-from typing import Any, Dict, Generic, List, TypeAlias, TypeVar
-
-import torch
-
-_STATE_DICT: TypeAlias = Dict[str, torch.Tensor]
+from typing import Any
 
 
 def _concat_prefix(prefix: str, name: str) -> str:
-    return f"{prefix}.{name}" if prefix else name
+    """TODO: implement `_concat_prefix`. Read docs/code-map.md before coding."""
+    raise NotImplementedError("Teaching scaffold: implement _concat_prefix()")
 
 
 class BaseOP:
-    @abstractmethod
-    def forward(self, *args: Any, **kwargs: Any) -> Any: ...
+    """TODO: implement `BaseOP`."""
+
+    def forward(self, *args: Any, **kwargs: Any) -> Any:
+        """TODO: implement `forward`. Read docs/code-map.md before coding."""
+        raise NotImplementedError("Teaching scaffold: implement forward()")
 
     def state_dict(self, *, prefix: str = "", result: _STATE_DICT | None = None) -> _STATE_DICT:
-        result = result if result is not None else {}
-
-        for name, param in self.__dict__.items():
-            if name.startswith("_"):
-                continue
-            if isinstance(param, torch.Tensor):
-                result[_concat_prefix(prefix, name)] = param
-            elif isinstance(param, BaseOP):
-                param.state_dict(prefix=_concat_prefix(prefix, name), result=result)
-
-        return result
+        """TODO: implement `state_dict`. Read docs/code-map.md before coding."""
+        raise NotImplementedError("Teaching scaffold: implement state_dict()")
 
     def load_state_dict(
-        self,
-        state_dict: _STATE_DICT,
-        *,
-        prefix: str = "",
-        _internal: bool = False,
+        self, state_dict: _STATE_DICT, *, prefix: str = "", _internal: bool = False
     ) -> None:
-        for name, param in self.__dict__.items():
-            if name.startswith("_"):
-                continue
-            if isinstance(param, torch.Tensor):
-                item = state_dict.pop(_concat_prefix(prefix, name))
-                assert isinstance(item, torch.Tensor)
-                assert param.shape == item.shape and param.dtype == item.dtype
-                setattr(self, name, item)
-            elif isinstance(param, BaseOP):
-                param.load_state_dict(
-                    state_dict, prefix=_concat_prefix(prefix, name), _internal=True
-                )
-
-        if not _internal and state_dict:
-            raise RuntimeError(f"Unexpected keys in state_dict: {list(state_dict.keys())}")
+        """TODO: implement `load_state_dict`. Read docs/code-map.md before coding."""
+        raise NotImplementedError("Teaching scaffold: implement load_state_dict()")
 
 
-class StateLessOP(BaseOP):
+class StateLessOP:
+    """TODO: implement `StateLessOP`. (original base: BaseOP)"""
+
     def __init__(self):
-        super().__init__()
+        """TODO: implement `__init__`. Read docs/code-map.md before coding."""
+        raise NotImplementedError("Teaching scaffold: implement __init__()")
 
     def load_state_dict(
-        self,
-        state_dict: _STATE_DICT,
-        *,
-        prefix: str = "",
-        _internal: bool = False,
+        self, state_dict: _STATE_DICT, *, prefix: str = "", _internal: bool = False
     ) -> None:
-        if not _internal and state_dict:
-            raise RuntimeError(f"Unexpected keys in state_dict: {list(state_dict.keys())}")
+        """TODO: implement `load_state_dict`. Read docs/code-map.md before coding."""
+        raise NotImplementedError("Teaching scaffold: implement load_state_dict()")
 
     def state_dict(self, *, prefix: str = "", result: _STATE_DICT | None = None) -> _STATE_DICT:
-        return result if result is not None else {}
+        """TODO: implement `state_dict`. Read docs/code-map.md before coding."""
+        raise NotImplementedError("Teaching scaffold: implement state_dict()")
 
 
-T = TypeVar("T", bound=BaseOP)
+class OPList:
+    """TODO: implement `OPList`. (original base: BaseOP, Generic[T])"""
 
-
-class OPList(BaseOP, Generic[T]):
     def __init__(self, ops: List[T]):
-        super().__init__()
-        self.op_list = ops
+        """TODO: implement `__init__`. Read docs/code-map.md before coding."""
+        raise NotImplementedError("Teaching scaffold: implement __init__()")
 
     def state_dict(self, *, prefix: str = "", result: _STATE_DICT | None = None) -> _STATE_DICT:
-        result = result if result is not None else {}
-        for i, op in enumerate(self.op_list):
-            op.state_dict(prefix=_concat_prefix(prefix, str(i)), result=result)
-        return result
+        """TODO: implement `state_dict`. Read docs/code-map.md before coding."""
+        raise NotImplementedError("Teaching scaffold: implement state_dict()")
 
     def load_state_dict(
-        self,
-        state_dict: _STATE_DICT,
-        *,
-        prefix: str = "",
-        _internal: bool = False,
+        self, state_dict: _STATE_DICT, *, prefix: str = "", _internal: bool = False
     ) -> None:
-        for i, op in enumerate(self.op_list):
-            op.load_state_dict(state_dict, prefix=_concat_prefix(prefix, str(i)), _internal=True)
+        """TODO: implement `load_state_dict`. Read docs/code-map.md before coding."""
+        raise NotImplementedError("Teaching scaffold: implement load_state_dict()")
 
-        if not _internal and state_dict:
-            raise RuntimeError(f"Unexpected keys in state_dict: {list(state_dict.keys())}")
+
+_STATE_DICT: Any = None
+T: Any = None

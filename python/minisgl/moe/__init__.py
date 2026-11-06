@@ -1,31 +1,41 @@
+"""Teaching scaffold for minisgl.moe.
+
+Scaffold for minisgl.moe.
+
+Every behavior is intentionally left for the learner. See:
+- docs/code-map.md for the subsystem map
+- docs/index.md for the recommended order
+"""
+
 from __future__ import annotations
 
-from typing import Protocol
+from typing import Any
 
 from minisgl.utils import Registry, init_logger
 
 from .base import BaseMoeBackend
 
-logger = init_logger(__name__)
+
+class MoeBackendCreator:
+    """TODO: implement `MoeBackendCreator`. (original base: Protocol)"""
+
+    def __call__(self) -> BaseMoeBackend:
+        """TODO: implement `__call__`. Read docs/code-map.md before coding."""
+        raise NotImplementedError("Teaching scaffold: implement __call__()")
 
 
-class MoeBackendCreator(Protocol):
-    def __call__(self) -> BaseMoeBackend: ...
-
-
-SUPPORTED_MOE_BACKENDS = Registry[MoeBackendCreator]("MoE Backend")
-
-
-@SUPPORTED_MOE_BACKENDS.register("fused")
 def create_fused_moe_backend():
-    from .fused import FusedMoe
-
-    return FusedMoe()
+    """TODO: implement `create_fused_moe_backend`. Read docs/code-map.md before coding."""
+    raise NotImplementedError("Teaching scaffold: implement create_fused_moe_backend()")
 
 
 def create_moe_backend(backend: str) -> BaseMoeBackend:
-    return SUPPORTED_MOE_BACKENDS[backend]()
+    """TODO: implement `create_moe_backend`. Read docs/code-map.md before coding."""
+    raise NotImplementedError("Teaching scaffold: implement create_moe_backend()")
 
+
+logger: Any = None
+SUPPORTED_MOE_BACKENDS: Any = None
 
 __all__ = [
     "BaseMoeBackend",

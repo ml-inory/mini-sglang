@@ -1,31 +1,22 @@
+"""Teaching scaffold for minisgl.kernel.index.
+
+Scaffold for minisgl.kernel.index.
+
+Every behavior is intentionally left for the learner. See:
+- docs/code-map.md for the subsystem map
+- docs/index.md for the recommended order
+"""
+
 from __future__ import annotations
 
-import functools
-from typing import TYPE_CHECKING, Tuple
-
-from .utils import KernelConfig, load_jit, make_cpp_args
-
-if TYPE_CHECKING:
-    import torch
-    from tvm_ffi import Module
-
-DEFAULT_INDEX_KERNEL_CONFIG = KernelConfig(num_threads=128, max_occupancy=1, use_pdl=False)
+from typing import Any
 
 
-@functools.cache
 def _jit_index_module(
-    element_size: int,
-    *,
-    num_splits: int = 1,
-    config: KernelConfig = DEFAULT_INDEX_KERNEL_CONFIG,
+    element_size: int, *, num_splits: int = 1, config: KernelConfig = ...
 ) -> Module:
-    args = make_cpp_args(element_size, num_splits, *config)
-    return load_jit(
-        "index",
-        *args,
-        cuda_files=["index.cu"],
-        cuda_wrappers=[("launch", f"IndexKernel<{args}>::run")],
-    )
+    """TODO: implement `_jit_index_module`. Read docs/code-map.md before coding."""
+    raise NotImplementedError("Teaching scaffold: implement _jit_index_module()")
 
 
 def indexing(
@@ -33,18 +24,10 @@ def indexing(
     indices: torch.Tensor,
     *,
     output: torch.Tensor | None = None,
-    vocab_range: Tuple[int, int] | None = None,  # (start, length)
+    vocab_range: Tuple[int, int] | None = None,
 ) -> torch.Tensor:
-    if output is None:
-        output = weights.new_empty(indices.shape[0], weights.shape[1])
+    """TODO: implement `indexing`. Read docs/code-map.md before coding."""
+    raise NotImplementedError("Teaching scaffold: implement indexing()")
 
-    element_size = weights.shape[1] * weights.element_size()
-    if element_size % 2048 == 0:
-        num_splits = 4
-    elif element_size % 1024 == 0:
-        num_splits = 2
-    else:
-        num_splits = 1
-    module = _jit_index_module(element_size, num_splits=num_splits)
-    module.launch(weights, indices, output, vocab_range)
-    return output
+
+DEFAULT_INDEX_KERNEL_CONFIG: Any = None

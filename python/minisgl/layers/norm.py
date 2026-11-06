@@ -1,38 +1,42 @@
-from typing import Tuple
+"""Teaching scaffold for minisgl.layers.norm.
 
-import torch
+Scaffold for minisgl.layers.norm.
 
-from .base import BaseOP
+Every behavior is intentionally left for the learner. See:
+- docs/code-map.md for the subsystem map
+- docs/index.md for the recommended order
+"""
+
+from __future__ import annotations
+
+from typing import Any
 
 
-class RMSNorm(BaseOP):
+class RMSNorm:
+    """TODO: implement `RMSNorm`. (original base: BaseOP)"""
+
     def __init__(self, size: int, eps: float) -> None:
-        from flashinfer import rmsnorm
-
-        self.eps = eps
-        self.weight = torch.empty(size)
-        self.rmsnorm = rmsnorm
+        """TODO: implement `__init__`. Read docs/code-map.md before coding."""
+        raise NotImplementedError("Teaching scaffold: implement __init__()")
 
     def forward(self, x: torch.Tensor) -> torch.Tensor:
-        return self.rmsnorm(x, self.weight, self.eps)
+        """TODO: implement `forward`. Read docs/code-map.md before coding."""
+        raise NotImplementedError("Teaching scaffold: implement forward()")
 
     def forward_inplace(self, x: torch.Tensor) -> None:
-        self.rmsnorm(x, self.weight, self.eps, out=x)
+        """TODO: implement `forward_inplace`. Read docs/code-map.md before coding."""
+        raise NotImplementedError("Teaching scaffold: implement forward_inplace()")
 
 
-class RMSNormFused(BaseOP):
+class RMSNormFused:
+    """TODO: implement `RMSNormFused`. (original base: BaseOP)"""
+
     def __init__(self, size: int, eps: float) -> None:
-        from flashinfer import fused_add_rmsnorm, rmsnorm
-
-        self.eps = eps
-        self.weight = torch.empty(size)
-        self.rmsnorm = rmsnorm
-        self.fused_add_rmsnorm = fused_add_rmsnorm
+        """TODO: implement `__init__`. Read docs/code-map.md before coding."""
+        raise NotImplementedError("Teaching scaffold: implement __init__()")
 
     def forward(
         self, x: torch.Tensor, residual: torch.Tensor | None = None
     ) -> Tuple[torch.Tensor, torch.Tensor]:
-        if residual is None:
-            return self.rmsnorm(x, self.weight, self.eps), x
-        self.fused_add_rmsnorm(x, residual, self.weight, self.eps)
-        return x, residual
+        """TODO: implement `forward`. Read docs/code-map.md before coding."""
+        raise NotImplementedError("Teaching scaffold: implement forward()")

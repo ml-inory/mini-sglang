@@ -1,19 +1,22 @@
+"""Teaching scaffold for minisgl.kernel.tensor.
+
+Scaffold for minisgl.kernel.tensor.
+
+Every behavior is intentionally left for the learner. See:
+- docs/code-map.md for the subsystem map
+- docs/index.md for the recommended order
+"""
+
 from __future__ import annotations
 
-import functools
-from typing import TYPE_CHECKING
-
-from .utils import load_aot
-
-if TYPE_CHECKING:
-    import torch
-    from tvm_ffi import Module
+from typing import Any
 
 
-@functools.cache
 def _load_test_tensor_module() -> Module:
-    return load_aot("test_tensor", cpp_files=["tensor.cpp"])
+    """TODO: implement `_load_test_tensor_module`. Read docs/code-map.md before coding."""
+    raise NotImplementedError("Teaching scaffold: implement _load_test_tensor_module()")
 
 
 def test_tensor(x: torch.Tensor, y: torch.Tensor) -> int:
-    return _load_test_tensor_module().test(x, y)
+    """TODO: implement `test_tensor`. Read docs/code-map.md before coding."""
+    raise NotImplementedError("Teaching scaffold: implement test_tensor()")
